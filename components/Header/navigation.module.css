@@ -1,0 +1,10 @@
+.navigation {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .logo img {
+    width: 60px;
+    height: 45px;
+  }
+}
