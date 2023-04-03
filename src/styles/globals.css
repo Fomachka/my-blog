@@ -1,7 +1,11 @@
 :root {
   --bg-white: #fff7ef;
   --bg-gradient: linear-gradient(#caf0fd, #fed579);
-
+  --bg-gradient-frame: linear-gradient(
+    to right,
+    rgba(197, 233, 254, 0.29),
+    rgba(252, 249, 172, 0.29)
+  );
   --font-color-main: #343434;
 
   --border-main: 1px solid #373636;
@@ -38,13 +42,20 @@ a {
   text-decoration: none;
 }
 
+h2 {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+}
+
 @media screen and (min-width: 768px) {
   body {
     margin: 30px;
   }
 
   .background {
-    padding: 35px;
+    padding: 40px;
+    height: calc(100vh - 60px);
   }
 }
 
@@ -55,6 +66,7 @@ a {
 
   .background {
     padding: 50px;
+    height: calc(100vh - 76px);
   }
 }
 

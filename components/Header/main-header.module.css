@@ -5,7 +5,14 @@
   max-width: 750px;
   margin: 0 auto;
 }
-
+.logo__sidemenu {
+  position: relative;
+  z-index: 9999;
+}
+.menu__sidemenu {
+  position: relative;
+  z-index: 9999;
+}
 .logo img {
   width: 30px;
 }
@@ -30,5 +37,8 @@
   .logo img {
     width: 60px;
     height: 45px;
+  }
+  .menu {
+    display: none;
   }
 }

@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Using the Strava API with Next.js",
+      "content": "This is the full content of post 1"
+    },
+    {
+      "id": 2,
+      "title": "Responsive Animations with Framer Motino",
+      "content": "This is the full content of post 2"
+    },
+    {
+      "id": 3,
+      "title": "Animated music bars with CSS",
+      "content": "This is the full content of post 3"
+    },
+    {
+      "id": 4,
+      "title": "Post 4",
+      "content": "This is the full content of post 4"
+    }
+  ]
+}

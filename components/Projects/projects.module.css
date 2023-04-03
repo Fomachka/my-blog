@@ -1,0 +1,48 @@
+.allprojects {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 30px auto 0 auto;
+  max-width: 750px;
+  color: var(--font-color-main);
+}
+
+.allprojects article {
+  margin-bottom: 30px;
+}
+
+.allprojects > h2 {
+  font-size: 14px;
+}
+
+@media screen and (min-width: 375px) {
+  .allprojects > h2 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .allprojects {
+    gap: 25px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .allprojects {
+    gap: 45px;
+    margin-top: 60px;
+  }
+  .allprojects > h2 {
+    font-size: 22px;
+    margin-bottom: -10px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .allprojects {
+    margin-top: 70px;
+  }
+  .allprojects > h2 {
+    font-size: 24px;
+  }
+}

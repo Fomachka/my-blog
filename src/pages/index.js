@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Fragment } from "react";
-import HomePage from "../../components/HomePage/home-page";
+import HomePage from "../../components/home-page/home-page";
 
 export default function Home() {
   return (

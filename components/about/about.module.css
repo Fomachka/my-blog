@@ -1,0 +1,184 @@
+.aboutpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  max-width: 750px;
+  margin: 30px auto 0 auto;
+  color: var(--font-color-main);
+}
+
+.aboutpage > h2 {
+  font-size: 16px;
+}
+
+.aboutpage > p {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  line-height: 23px;
+  padding: 0px 5px;
+}
+
+.aboutpage > p > span {
+  color: #2e952c;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: var(--border-sec);
+  background: var(--bg-gradient-frame);
+}
+
+.about__p {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.links {
+  display: flex;
+  gap: 10px;
+}
+
+.link1 {
+  width: 20px;
+  height: auto;
+}
+
+.link2 {
+  width: 17px;
+  height: 17px;
+}
+
+.profile__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid black;
+}
+
+@media screen and (min-width: 375px) {
+  .aboutpage > h2 {
+    font-size: 16px;
+  }
+
+  .aboutpage > p {
+    font-size: 11px;
+  }
+
+  .about {
+    padding: 14px 20px;
+  }
+
+  .about__p {
+    font-size: 12px;
+  }
+  .links {
+    gap: 12px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .aboutpage {
+    gap: 25px;
+  }
+  .aboutpage > p {
+    padding: 0px 10px;
+    font-size: 12px;
+    line-height: 25px;
+  }
+
+  .about {
+    padding: 16px 22px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .aboutpage {
+    gap: 45px;
+    margin-top: 60px;
+  }
+  .aboutpage > h2 {
+    font-size: 22px;
+  }
+
+  .aboutpage > p {
+    font-size: 18px;
+    line-height: 41px;
+    padding: 0px 15px;
+  }
+
+  .aboutpage h2 {
+    margin-bottom: -10px;
+  }
+
+  .about {
+    padding: 18px 26px;
+    margin: -10px 0;
+  }
+
+  .about__p {
+    font-size: 20px;
+  }
+  .links {
+    gap: 20px;
+  }
+
+  .links a {
+    display: block;
+    width: 100%;
+  }
+
+  .link1 {
+    width: 31px;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .link2 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .profile__img {
+    max-height: 50vh;
+    object-position: 40% 60%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .aboutpage {
+    margin-top: 70px;
+  }
+  .aboutpage > h2 {
+    font-size: 24px;
+  }
+
+  .aboutpage > p {
+    font-size: 20px;
+    line-height: 46px;
+  }
+
+  .about {
+    padding: 20px 28px;
+  }
+
+  .about__p {
+    font-size: 20px;
+  }
+
+  .link1 {
+    width: 32px;
+  }
+
+  .link2 {
+    width: 25px;
+    height: 25px;
+  }
+}
