@@ -28,8 +28,8 @@ const About = () => {
       <p className={styles.description}>
         I’m a front-end wizard who occasionally dabbles in back-end shenanigans. I prefer to focus
         on creating visually stunning websites that are joy to use and making them user-friendly.
-        Let&apos;s make some magic!
       </p>
+      <p className={styles.description}>Let&apos;s make some magic!</p>
       <Image src={profilePic2} alt="kim posing on the pier" className={styles.profile__img} />
     </section>
   );

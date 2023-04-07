@@ -3,22 +3,34 @@
     {
       "id": 1,
       "title": "Using the Strava API with Next.js",
-      "content": "This is the full content of post 1"
+      "content": "This is the full content of post 1",
+      "slug": "using-the-strava-api",
+      "image": "getting-started-nextjs.png",
+      "date": "2022-10-34"
     },
     {
       "id": 2,
-      "title": "Responsive Animations with Framer Motino",
-      "content": "This is the full content of post 2"
+      "title": "Responsive Animations with Framer Motion",
+      "content": "This is the full content of post 2",
+      "slug": "responsive-animations-with-framer-motion",
+      "image": "responsive-animations-with-framer-motion.png",
+      "date": "2022-42-34"
     },
     {
       "id": 3,
       "title": "Animated music bars with CSS",
-      "content": "This is the full content of post 3"
+      "content": "This is the full content of post 3",
+      "slug": "animated-music-bars-with-CSS",
+      "image": "getting-started-nextjs.png",
+      "date": "2022-32-34"
     },
     {
       "id": 4,
       "title": "Post 4",
-      "content": "This is the full content of post 4"
+      "content": "This is the full content of post 4",
+      "slug": "Post-4",
+      "image": "getting-started-nextjs.png",
+      "date": "2022-10-34"
     }
   ]
 }

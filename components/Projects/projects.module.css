@@ -12,12 +12,12 @@
 }
 
 .allprojects > h2 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 375px) {
   .allprojects > h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -29,7 +29,7 @@
 
 @media screen and (min-width: 768px) {
   .allprojects {
-    gap: 45px;
+    gap: 35px;
     margin-top: 60px;
   }
   .allprojects > h2 {
@@ -40,6 +40,7 @@
 
 @media screen and (min-width: 1024px) {
   .allprojects {
+    gap: 40px;
     margin-top: 70px;
   }
   .allprojects > h2 {

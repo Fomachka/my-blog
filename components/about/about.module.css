@@ -5,7 +5,6 @@
   gap: 22px;
   max-width: 750px;
   margin: 30px auto 0 auto;
-  color: var(--font-color-main);
 }
 
 .aboutpage > h2 {
@@ -13,11 +12,9 @@
 }
 
 .aboutpage > p {
-  font-family: "Lato", sans-serif;
-  letter-spacing: 0.5px;
-  font-size: 10px;
-  line-height: 23px;
+  font-size: 15px;
   padding: 0px 5px;
+  line-height: calc(1em + 1rem);
 }
 
 .aboutpage > p > span {
@@ -34,10 +31,9 @@
 }
 
 .about__p {
-  font-family: "Lato", sans-serif;
-  letter-spacing: 2px;
-  font-weight: 400;
-  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+  color: var(--font-color-main);
 }
 
 .links {
@@ -57,18 +53,15 @@
 
 .profile__img {
   width: 100%;
+  margin-top: -10px;
   height: auto;
   object-fit: cover;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 @media screen and (min-width: 375px) {
   .aboutpage > h2 {
-    font-size: 16px;
-  }
-
-  .aboutpage > p {
-    font-size: 11px;
+    font-size: 18px;
   }
 
   .about {
@@ -76,10 +69,13 @@
   }
 
   .about__p {
-    font-size: 12px;
+    font-size: 15px;
   }
   .links {
     gap: 12px;
+  }
+  .aboutpage > p {
+    font-size: 16px;
   }
 }
 
@@ -89,8 +85,7 @@
   }
   .aboutpage > p {
     padding: 0px 10px;
-    font-size: 12px;
-    line-height: 25px;
+    font-size: 17px;
   }
 
   .about {
@@ -100,7 +95,7 @@
 
 @media screen and (min-width: 768px) {
   .aboutpage {
-    gap: 45px;
+    gap: 35px;
     margin-top: 60px;
   }
   .aboutpage > h2 {
@@ -108,9 +103,9 @@
   }
 
   .aboutpage > p {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 41px;
-    padding: 0px 15px;
+    padding: 0px 12px;
   }
 
   .aboutpage h2 {
@@ -119,7 +114,6 @@
 
   .about {
     padding: 18px 26px;
-    margin: -10px 0;
   }
 
   .about__p {
@@ -154,6 +148,9 @@
 
 @media screen and (min-width: 1024px) {
   .aboutpage {
+    gap: 40px;
+  }
+  .aboutpage {
     margin-top: 70px;
   }
   .aboutpage > h2 {
@@ -161,7 +158,7 @@
   }
 
   .aboutpage > p {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 46px;
   }
 
@@ -170,7 +167,7 @@
   }
 
   .about__p {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .link1 {

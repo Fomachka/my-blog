@@ -7,11 +7,11 @@
 }
 .logo__sidemenu {
   position: relative;
-  z-index: 9999;
+  z-index: 999;
 }
 .menu__sidemenu {
   position: relative;
-  z-index: 9999;
+  z-index: 999;
 }
 .logo img {
   width: 30px;

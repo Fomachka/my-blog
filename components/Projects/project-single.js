@@ -20,7 +20,7 @@ const SingleProject = () => {
           development of the design.
         </p>
         <Link href={`/projects/${id}`}>
-          <p className={styles.paragraph}>Read More</p>
+          <p className={`${styles.paragraph} ${styles.paragraph__more}`}>Read More</p>
         </Link>
         <div className={styles.profile__imgdiv}>
           <Image src={profilePic} alt="kim posing on the pier" className={styles.profile__img} />

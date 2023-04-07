@@ -1,0 +1,8 @@
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 750px;
+  margin: 30px auto 0 auto;
+  color: var(--font-color-main);
+}

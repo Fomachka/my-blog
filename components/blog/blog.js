@@ -1,28 +1,27 @@
 import styles from "./blog.module.css";
 import search from "../../public/images/search-blog.svg";
 import Image from "next/image";
-import BlogPost from "./blog-post";
+import BlogPost from "./blog-posts";
 import Pagination from "./pagination";
 import { useState } from "react";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const BlogPage = ({ name }) => {
-  console.log(name);
+const BlogPage = (props) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-  let blogPosts = [];
+  // let blogPosts = [];
 
   // fetching blogs from our api/staticdata
-  const { data, error } = useSWR("/api/staticdata", fetcher);
-  if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
-  if (data) {
-    blogPosts = JSON.parse(data);
-  }
+  // const { data, error } = useSWR("/api/staticdata", fetcher);
+  // if (error) return <div>Failed to load</div>;
+  // if (!data) return <div>Loading...</div>;
+  // if (data) {
+  //   blogPosts = JSON.parse(data);
+  // }
 
   return (
     <section className={styles.blog}>
@@ -35,7 +34,16 @@ const BlogPage = ({ name }) => {
       </div>
       <h2 className={styles.blog__h2}>ARTICLES</h2>
       <div className={styles.blogposts}>
-        {data && blogPosts.posts.map((post) => <BlogPost key={post.id} />)}
+        {props.posts.map((post) => (
+          <BlogPost
+            key={post.slug}
+            title={post.title}
+            image={post.image}
+            slug={post.slug}
+            date={post.date}
+            content={post.content}
+          />
+        ))}
       </div>
       <Pagination />
     </section>

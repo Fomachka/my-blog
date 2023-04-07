@@ -10,30 +10,30 @@
   right: 0;
   left: 0;
   background: var(--bg-white);
+  opacity: 0.96;
   height: inherit;
   margin: 25px;
   overflow: scroll;
-  z-index: 2;
+  z-index: 998;
   border: var(--border-main);
 }
 
 .navigation__ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   height: 100%;
-  gap: 60px;
-  margin-left: auto;
+  gap: 50px;
+  margin-left: 10%;
 }
 
 .navigation__ul li {
   list-style: none;
   color: var(--font-color-main);
-  font-family: "Lato", sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   font-size: 14px;
 }
+
 @media screen and (min-width: 425px) {
   .navigation__ul {
     gap: 80px;
@@ -85,6 +85,7 @@
   }
 
   .navigation__ul li {
+    margin: 0 auto;
     font-size: 16px;
   }
 }
