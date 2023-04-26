@@ -1,20 +1,49 @@
 :root {
-  --bg-white: #fff7ef;
-  --bg-gradient: linear-gradient(#caf0fd, #fed579);
-  --bg-gradient-frame: linear-gradient(
-    to right,
-    rgba(197, 233, 254, 0.29),
-    rgba(252, 249, 172, 0.29)
-  );
-  --bg-gradient-post: linear-gradient(to right, rgba(197, 233, 254, 0.3), rgba(252, 249, 172, 0.3));
-  --font-color-main: #343434;
-  --font-color-bright: #4a4a4a;
-  --font-color-dark: #212121;
+  --bg-white: #ffffff;
+  --background-main: #fff;
 
+  --bg-color-hover: #f9fbfd;
+
+  --header-bg-color: rgba(255, 255, 255, 0.9);
+
+  --font-color-main: #343434;
+  --font-color-accent: #000000;
+  --font-color-accent2: #fff;
+
+  --font-color-gray: #666666;
+  --font-color-to-gradient: #555555;
+  --font-color-highlight: #0070f3;
+
+  --font-color-h3: #262626;
+
+  --icon-color-menu: #2b2b2b;
+  --icon-color-resume: #2b2b2b;
+
+  --border-color: #eaeaea;
+  --border-color-dark: #bebebe;
   --border-main: 1px solid #373636;
   --border-sec: 1px solid #777777;
 
   --underline-color: #5d5a5a;
+}
+
+body[data-theme="dark"] {
+  --background-main: hsl(0, 0%, 4%);
+  --bg-color-hover: #0d0d0e;
+
+  --header-bg-color: rgba(0, 0, 0 0.9);
+
+  --font-color-highlight: #3291ff;
+  --font-color-to-gradient: #d6d6d6;
+  --font-color-accent: #fff;
+  --font-color-accent2: #000;
+
+  --font-color-gray: #888888;
+  --font-color-h3: #fff;
+
+  --icon-color-menu: #e7e7e7;
+
+  --border-color: #333;
 }
 
 * {
@@ -23,17 +52,6 @@
   margin: 0;
   line-height: calc(1em + 0.725rem);
   -webkit-font-smoothing: antialiased;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  background: var(--bg-gradient) no-repeat;
-}
-
-body {
-  margin: 25px;
 }
 
 a {
@@ -46,51 +64,20 @@ h1 {
 }
 
 h2 {
-  font-weight: 500;
-  color: var(--font-color-dark);
-  letter-spacing: 1.5px;
+  font-weight: 700;
 }
 
 h3 {
   color: var(--font-color-main);
 }
 
-p {
-  color: var(--font-color-bright);
-}
-
 .background {
-  border: var(--border-main);
-  background: var(--bg-white);
-  padding: 20px 25px;
-  height: calc(100vh - 50px);
-  overflow: scroll;
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    margin: 30px;
-  }
-
-  .background {
-    padding: 40px;
-    height: calc(100vh - 60px);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-    margin: 38px;
-  }
-
-  .background {
-    padding: 50px;
-    height: calc(100vh - 76px);
-  }
+  background: var(--background-main);
+  padding: 0px 25px;
 }
 
 @media screen and (min-width: 1440px) {
   .background {
-    padding: 60px;
+    padding: 0px 40px;
   }
 }

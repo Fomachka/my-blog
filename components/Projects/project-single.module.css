@@ -30,7 +30,6 @@
 .header__name {
   padding: 12px;
   width: fit-content;
-  background: var(--bg-gradient-frame);
 }
 
 .header__name > h3 {

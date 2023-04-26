@@ -1,29 +1,122 @@
-import { useState } from "react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import styles from "./main-header.module.css";
+import menustyles from "./menu-icon.module.css";
 import Image from "next/image";
-import logo from "../../public/images/logo-blog.svg";
-import menu from "../../public/images/menu.svg";
-import Navigation from "./navigation";
-import xmenu from "../../public/images/x-menu.svg";
+import logo from "../../public/images/my-logo.png";
+import SunIcon from "../../public/images/sun.svg";
+import MoonIcon from "../../public/images/moon.svg";
+import { useRouter } from "next/router";
+import { useRef } from "react";
+import MenuIcon from "./menu-icon";
 
 const MainHeader = () => {
-  const [toggle, setToggle] = useState(false);
+  const storage = typeof window !== "undefined" ? localStorage.theme : "light";
+  const [themeMode, setThemeMode] = useState(storage);
+  console.log(storage);
+  const themeModeHandle = (e) => {
+    e.preventDefault();
+    setThemeMode(themeMode === "dark" ? "light" : "dark");
+  };
+
+  const navRef = useRef();
+  const iconRef = useRef();
+  const sunIconRef = useRef();
+
+  const router = useRouter();
+
+  const handleAnimation = () => {
+    iconRef.current.classList.toggle(`${menustyles.openmenu}`);
+  };
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle(`${styles.responsive__nav}`);
+    if (!sunIconRef.current.classList.contains(`${styles.responsive__icon}`)) {
+      sunIconRef.current.classList.add(styles.responsive__icon);
+    } else {
+      sunIconRef.current.classList.remove(styles.responsive__icon);
+    }
+  };
+
+  const closeNavbar = () => {
+    navRef.current.classList.remove(`${styles.responsive__nav}`);
+    if (iconRef.current.classList.contains(`${menustyles.openmenu}`)) {
+      handleAnimation();
+    }
+    if (!sunIconRef.current.classList.contains(`${styles.responsive__icon}`)) {
+      sunIconRef.current.classList.add(styles.responsive__icon);
+    } else {
+      sunIconRef.current.classList.remove(styles.responsive__icon);
+    }
+  };
+
+  useEffect(() => {
+    document.body.dataset.theme = themeMode;
+    window.localStorage.setItem("theme", themeMode);
+  }, [themeMode]);
+
   return (
     <header className={styles.header}>
-      <div className={`${styles.logo} ${styles.logo__sidemenu}`}>
+      <div className={styles.header__menu}>
         <Link href="/">
-          <Image src={logo} alt="website logo" />
+          <Image src={logo} alt="website logo" className={styles.header__logo} />
         </Link>
+        <nav className={styles.navigation} ref={navRef}>
+          <ul className={styles.navigation__ul}>
+            <li
+              onClick={closeNavbar}
+              className={router.asPath === "/" ? `${styles.li__active}` : ""}
+            >
+              <Link href="/">Portfolio</Link>
+            </li>
+            <li
+              onClick={closeNavbar}
+              className={router.asPath === "/about" ? `${styles.li__active}` : ""}
+            >
+              <Link href="/about">About</Link>
+            </li>
+            <li
+              onClick={closeNavbar}
+              className={router.asPath === "/blog" ? `${styles.li__active}` : ""}
+            >
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li
+              onClick={closeNavbar}
+              className={router.asPath === "/projects" ? `${styles.li__active}` : ""}
+            >
+              <Link href="/projects">Projects</Link>
+            </li>
+          </ul>
+          <button className={styles.navigation__modalicons}>
+            {themeMode === "light" ? (
+              <div ref={sunIconRef}>
+                <SunIcon
+                  onClick={themeModeHandle}
+                  className={`${styles.navigation__sun} ${styles.sun} `}
+                />
+              </div>
+            ) : (
+              <div ref={sunIconRef}>
+                <MoonIcon
+                  onClick={themeModeHandle}
+                  className={`${styles.navigation__sun} ${styles.moon} `}
+                />
+              </div>
+            )}
+          </button>
+        </nav>
+        <button className={styles.navigation__btn} onClick={showNavbar}>
+          <MenuIcon animation={handleAnimation} ref={iconRef} />
+        </button>
       </div>
-      <div
-        className={`${styles.menu} ${styles.menu__sidemenu}`}
-        onClick={() => setToggle((prev) => !prev)}
-      >
-        {!toggle && <Image src={menu} alt="hamburger menu" className={styles.menu__ham} />}
-        {toggle && <Image src={xmenu} alt="closing menu" className={styles.menu__x} />}
-      </div>
-      <Navigation active={toggle} setActive={setToggle} />
+      <button className={styles.navigation__icons}>
+        {themeMode === "light" ? (
+          <SunIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.sun}`} />
+        ) : (
+          <MoonIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.moon}`} />
+        )}
+      </button>
     </header>
   );
 };

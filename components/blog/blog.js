@@ -13,15 +13,6 @@ const BlogPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-  // let blogPosts = [];
-
-  // fetching blogs from our api/staticdata
-  // const { data, error } = useSWR("/api/staticdata", fetcher);
-  // if (error) return <div>Failed to load</div>;
-  // if (!data) return <div>Loading...</div>;
-  // if (data) {
-  //   blogPosts = JSON.parse(data);
-  // }
 
   return (
     <section className={styles.blog}>
@@ -42,6 +33,7 @@ const BlogPage = (props) => {
             slug={post.slug}
             date={post.date}
             content={post.content}
+            short={post.short}
           />
         ))}
       </div>

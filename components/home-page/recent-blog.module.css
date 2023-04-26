@@ -1,0 +1,10 @@
+.recent {
+  display: grid;
+  gap: 25px;
+}
+
+@media screen and (min-width: 1000px) {
+  .recent {
+    grid-template-columns: 1fr 1fr;
+  }
+}

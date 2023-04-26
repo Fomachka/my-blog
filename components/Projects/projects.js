@@ -1,5 +1,5 @@
 import styles from "./projects.module.css";
-import SingleProject from "./project-single";
+import SingleProject from "./project-single.js";
 
 const AllProjects = () => {
   return (

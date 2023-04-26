@@ -2,7 +2,7 @@ import styles from "./blog-post.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogPosts = ({ date, image, slug, content, title }) => {
+const BlogPosts = ({ date, image, slug, content, title, short }) => {
   // Dont forget to include date in JSX below or pass it to a component
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -24,7 +24,7 @@ const BlogPosts = ({ date, image, slug, content, title }) => {
       />
       <div className={styles.blogpost__info}>
         <h1>{title}</h1>
-        <p className={styles.blogpost__p}>{content}</p>
+        <p className={styles.blogpost__p}>{short}</p>
         <Link href={linkPath}>
           <p className={styles.blogpost__more}>Read more</p>
         </Link>
