@@ -5,6 +5,7 @@ import styles from "./post-content.module.css";
 import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import ArrowIcon from "../../../public/images/arrow.svg";
 
 const PostContent = (props) => {
   const { post } = props;
@@ -43,10 +44,20 @@ const PostContent = (props) => {
 
   return (
     <article className={styles.article}>
-      <PostHeader heading={post.title} image={post.image} slug={post.slug} />
-      <ReactMarkdown components={customRenderers} className={styles.reactmarkdown}>
-        {post.content}
-      </ReactMarkdown>
+      <div className={styles.article__back}>
+        <p>
+          <span>
+            <ArrowIcon className={styles.article__iconback} />
+          </span>
+          All posts
+        </p>
+      </div>
+      <div>
+        <PostHeader heading={post.title} image={post.image} slug={post.slug} date={post.date} />
+        <ReactMarkdown components={customRenderers} className={styles.reactmarkdown}>
+          {post.content}
+        </ReactMarkdown>
+      </div>
     </article>
   );
 };

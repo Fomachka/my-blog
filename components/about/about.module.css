@@ -198,14 +198,12 @@
 .link1 {
   height: auto;
   width: 20px;
-  stroke: var(--icon-color-resume);
-  fill: var(--background-main);
+  stroke: var(--icon-color-menu);
 }
 .link2 {
   height: auto;
   width: 15px;
-  stroke: var(--icon-color-resume);
-  fill: var(--background-main);
+  stroke: var(--icon-color-menu);
 }
 
 .about__contact {
@@ -219,7 +217,7 @@
   line-height: 30px;
   letter-spacing: -0.5px;
   font-size: 15px;
-  color: var(--font-color-accent);
+  color: var(--font-color-h3);
 }
 
 .arrowdown {

@@ -4,6 +4,7 @@ import styles from "./main-header.module.css";
 import menustyles from "./menu-icon.module.css";
 import Image from "next/image";
 import logo from "../../public/images/my-logo.png";
+import logoDark from "../../public/images/my-logo-dark.png";
 import SunIcon from "../../public/images/sun.svg";
 import MoonIcon from "../../public/images/moon.svg";
 import { useRouter } from "next/router";
@@ -11,12 +12,13 @@ import { useRef } from "react";
 import MenuIcon from "./menu-icon";
 
 const MainHeader = () => {
-  const storage = typeof window !== "undefined" ? localStorage.theme : "light";
+  const storage = typeof window !== "undefined" ? window.localStorage.theme : "light";
   const [themeMode, setThemeMode] = useState(storage);
-  console.log(storage);
+  const [clientLoaded, setClientLoaded] = useState(false);
+
   const themeModeHandle = (e) => {
     e.preventDefault();
-    setThemeMode(themeMode === "dark" ? "light" : "dark");
+    setThemeMode((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const navRef = useRef();
@@ -33,8 +35,6 @@ const MainHeader = () => {
     navRef.current.classList.toggle(`${styles.responsive__nav}`);
     if (!sunIconRef.current.classList.contains(`${styles.responsive__icon}`)) {
       sunIconRef.current.classList.add(styles.responsive__icon);
-    } else {
-      sunIconRef.current.classList.remove(styles.responsive__icon);
     }
   };
 
@@ -55,11 +55,19 @@ const MainHeader = () => {
     window.localStorage.setItem("theme", themeMode);
   }, [themeMode]);
 
+  useEffect(() => {
+    setClientLoaded(true);
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.header__menu}>
         <Link href="/">
-          <Image src={logo} alt="website logo" className={styles.header__logo} />
+          {themeMode === "light" && clientLoaded ? (
+            <Image src={logo} alt="website logo" className={styles.header__logo} />
+          ) : (
+            <Image src={logoDark} alt="website logo" className={styles.header__logo} />
+          )}
         </Link>
         <nav className={styles.navigation} ref={navRef}>
           <ul className={styles.navigation__ul}>
@@ -89,7 +97,7 @@ const MainHeader = () => {
             </li>
           </ul>
           <button className={styles.navigation__modalicons}>
-            {themeMode === "light" ? (
+            {themeMode === "light" && clientLoaded ? (
               <div ref={sunIconRef}>
                 <SunIcon
                   onClick={themeModeHandle}
@@ -111,7 +119,7 @@ const MainHeader = () => {
         </button>
       </div>
       <button className={styles.navigation__icons}>
-        {themeMode === "light" ? (
+        {themeMode === "light" && clientLoaded ? (
           <SunIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.sun}`} />
         ) : (
           <MoonIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.moon}`} />

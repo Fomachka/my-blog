@@ -2,13 +2,19 @@
   display: flex;
   position: sticky;
   top: 0;
-  padding: 40px 0;
+  padding: 40px 0px;
   z-index: 999;
   align-items: center;
   justify-content: space-between;
   max-width: 1320px;
+  width: 100%;
   margin: 0 auto;
   background: var(--header-bg-color);
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  -moz-transition: 0.4s ease;
+  -ms-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
 }
 
 .header__menu {
@@ -229,8 +235,8 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1320px) {
   .header {
-    padding: 25px 0;
+    padding: 25px;
   }
 }

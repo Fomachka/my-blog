@@ -22,7 +22,7 @@
 }
 
 .mainpage__hr {
-  border: 1px dashed var(--font-color-to-gradient);
+  border: 2px dashed var(--hr-color);
   opacity: 0.3;
 }
 

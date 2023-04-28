@@ -13,6 +13,7 @@
   --font-color-gray: #666666;
   --font-color-to-gradient: #555555;
   --font-color-highlight: #0070f3;
+  --font-color-subtle: #787878;
 
   --font-color-h3: #262626;
 
@@ -24,14 +25,17 @@
   --border-main: 1px solid #373636;
   --border-sec: 1px solid #777777;
 
+  --hr-color: #d1d1d1;
+  --hr-color-blog: rgba(0, 0, 0, 0.1);
+
   --underline-color: #5d5a5a;
 }
 
 body[data-theme="dark"] {
-  --background-main: hsl(0, 0%, 4%);
+  --background-main: rgb(10, 10, 10);
   --bg-color-hover: #0d0d0e;
 
-  --header-bg-color: rgba(0, 0, 0 0.9);
+  --header-bg-color: rgba(10, 10, 10, 0.9);
 
   --font-color-highlight: #3291ff;
   --font-color-to-gradient: #d6d6d6;
@@ -40,10 +44,15 @@ body[data-theme="dark"] {
 
   --font-color-gray: #888888;
   --font-color-h3: #fff;
+  --font-color-subtle: #787878;
 
   --icon-color-menu: #e7e7e7;
+  --icon-color-resume: #2b2b2b;
 
   --border-color: #333;
+  --border-color-dark: #4e4e4e;
+
+  --hr-color: #333;
 }
 
 * {
@@ -71,9 +80,26 @@ h3 {
   color: var(--font-color-main);
 }
 
-.background {
+body,
+html {
+  height: 100%;
+}
+
+.background-theme {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--background-main);
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  -moz-transition: 0.4s ease;
+  -ms-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
+}
+
+.background {
   padding: 0px 25px;
+  flex-grow: 1;
 }
 
 @media screen and (min-width: 1440px) {

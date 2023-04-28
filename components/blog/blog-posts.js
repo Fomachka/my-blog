@@ -15,20 +15,14 @@ const BlogPosts = ({ date, image, slug, content, title, short }) => {
 
   return (
     <article className={styles.blogpost}>
-      <Image
-        src={imagePath}
-        alt="coding image"
-        className={styles.blogpost__img}
-        width={250}
-        height={250}
-      />
-      <div className={styles.blogpost__info}>
-        <h1>{title}</h1>
-        <p className={styles.blogpost__p}>{short}</p>
-        <Link href={linkPath}>
-          <p className={styles.blogpost__more}>Read more</p>
-        </Link>
-      </div>
+      <Link href={linkPath}>
+        <div className={styles.blogpost__info}>
+          <time className={styles.blogpost__date}>{formattedDate}</time>
+          <h3 className={styles.blogpost__h3}>{title}</h3>
+          <p className={styles.blogpost__p}>{short}</p>
+          <div></div>
+        </div>
+      </Link>
     </article>
   );
 };

@@ -6,16 +6,35 @@
   margin: 30px auto 0 auto;
 }
 
+.article__back > p {
+  color: var(--font-color-highlight);
+  font-size: 14px;
+}
+
+.article__iconback {
+  width: 18px;
+  height: auto;
+  margin-right: 5px;
+  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+}
+
 .reactmarkdown p {
   font-size: 16px;
-  margin-bottom: 1.5rem;
+  color: var(--font-color-accent);
+  letter-spacing: -0.5px;
+  line-height: 29px;
+  margin: 16px auto 24px auto;
 }
 
 .reactmarkdown h2 {
-  margin: 64px 0 32px 0;
-  color: rgb(30, 134, 24);
-  letter-spacing: 0.5px;
-  font-size: 28px;
+  margin-top: 40px;
+  color: var(--font-color-h3);
+  letter-spacing: -0.5px;
+  font-size: 24px;
   font-weight: 600;
 }
 

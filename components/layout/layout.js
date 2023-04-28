@@ -1,15 +1,6 @@
 import MainHeader from "../header/main-header";
-import { Lato, Poppins, Inter } from "@next/font/google";
-
-// const lato = Lato({
-//   weight: ["300", "400", "700"],
-//   subsets: ["latin"],
-// });
-
-// const poppins = Poppins({
-//   weight: ["300", "400", "700"],
-//   subsets: ["latin"],
-// });
+import { Inter } from "@next/font/google";
+import Footer from "../footer/footer";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
@@ -18,9 +9,10 @@ const inter = Inter({
 
 const Layout = (props) => {
   return (
-    <div className={`${inter.className} background`}>
+    <div className={`${inter.className} background-theme`}>
       <MainHeader />
-      <main>{props.children}</main>
+      <main className="background">{props.children}</main>
+      <Footer />
     </div>
   );
 };
