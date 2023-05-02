@@ -172,6 +172,13 @@
 
 .about__links:hover {
   border: 1px solid var(--font-color-accent);
+  cursor: not-allowed;
+}
+
+.about__links:hover .link1,
+.about__links:hover .link2 {
+  stroke: var(--font-color-accent);
+  stroke-width: 1.2px;
 }
 
 .about__links:hover .about__link_p {

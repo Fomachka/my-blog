@@ -2,7 +2,7 @@
   --bg-white: #ffffff;
   --background-main: #fff;
 
-  --bg-color-hover: #f9fbfd;
+  --bg-color-hover: #fafafa;
 
   --header-bg-color: rgba(255, 255, 255, 0.9);
 
@@ -20,10 +20,16 @@
   --icon-color-menu: #2b2b2b;
   --icon-color-resume: #2b2b2b;
 
+  --blog-color-headings: #121212;
+  --blog-color-text: #050505;
+
   --border-color: #eaeaea;
   --border-color-dark: #bebebe;
   --border-main: 1px solid #373636;
   --border-sec: 1px solid #777777;
+
+  --inlinecode-color-bg: #fafafa;
+  --inlinecode-color-text: #000;
 
   --hr-color: #d1d1d1;
   --hr-color-blog: rgba(0, 0, 0, 0.1);
@@ -33,7 +39,7 @@
 
 body[data-theme="dark"] {
   --background-main: rgb(10, 10, 10);
-  --bg-color-hover: #0d0d0e;
+  --bg-color-hover: rgb(8, 8, 8);
 
   --header-bg-color: rgba(10, 10, 10, 0.9);
 
@@ -49,8 +55,14 @@ body[data-theme="dark"] {
   --icon-color-menu: #e7e7e7;
   --icon-color-resume: #2b2b2b;
 
+  --blog-color-headings: #ededed;
+  --blog-color-text: rgb(256, 256, 256, 0.85);
+
   --border-color: #333;
   --border-color-dark: #4e4e4e;
+
+  --inlinecode-color-bg: #1f1f1f;
+  --inlinecode-color-text: #fff;
 
   --hr-color: #333;
 }

@@ -16,8 +16,8 @@
 }
 
 .recent__blog:hover {
-  border: 1px solid var(--border-color-dark);
-  background-color: var(--bg-color-hover);
+  background: var(--bg-color-hover);
+  border: 1px solid var(--border-color);
 }
 
 .recent__blog:hover .recent__h3 {
@@ -38,6 +38,7 @@
 .recent__p {
   font-size: 12px;
   color: var(--font-color-gray);
+  letter-spacing: -0.5px;
   margin-top: 10px;
   line-height: 22.5px;
 }
@@ -49,11 +50,11 @@
   object-fit: cover;
   overflow-y: hidden;
   box-shadow: -3px -3px 12px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 4px 0 0 4px;
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
-  -ms-border-radius: 4px 0 0 4px;
-  -o-border-radius: 4px 0 0 4px;
+  border-radius: 4px 12px 12px 4px;
+  -webkit-border-radius: 4px 12px 12px 4px;
+  -moz-border-radius: 4px 12px 12px 4px;
+  -ms-border-radius: 4px 12px 12px 4px;
+  -o-border-radius: 4px 12px 12px 4px;
   filter: saturate(0%);
   opacity: 0.2;
 }

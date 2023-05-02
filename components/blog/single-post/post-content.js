@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import ArrowIcon from "../../../public/images/arrow.svg";
+import Link from "next/link";
 
 const PostContent = (props) => {
   const { post } = props;
@@ -13,19 +14,26 @@ const PostContent = (props) => {
   const customRenderers = {
     p(paragraph) {
       const { node } = paragraph;
-
       if (node.children[0].tagName === "img") {
         const image = node.children[0];
+        const altString = image.properties.alt;
+        const hasCaption = altString?.toLowerCase().includes("{caption:");
+        const caption = altString?.match(/{caption: (.*?)}/)?.pop();
 
         return (
-          <div className={styles.image}>
+          <figure className={styles.image}>
             <Image
               src={`/images/posts/${post.slug}/${image.properties.src}`}
               alt={image.properties.alt}
               width={200}
               height={100}
             />
-          </div>
+            {hasCaption && (
+              <figcaption className={styles.image__caption} aria-label={caption}>
+                {caption}
+              </figcaption>
+            )}
+          </figure>
         );
       }
 
@@ -34,29 +42,52 @@ const PostContent = (props) => {
     h2(words) {
       return <h2>{words.children}</h2>;
     },
-    code(code) {
-      const { className, children } = code;
-      const language = className.split("-")[1]; // className is something like language-js => We need the "js" part here
-      // eslint-disable-next-line react/no-children-prop
-      return <SyntaxHighlighter style={atomDark} language={language} children={children} />;
+    code({ node, inline, className, children, ...props }) {
+      const match = /language-(\w+)/.exec(className || "");
+      return !inline && match ? (
+        <SyntaxHighlighter
+          // eslint-disable-next-line react/no-children-prop
+          children={String(children).replace(/\n$/, "")}
+          style={atomDark} // theme
+          language={match[1]}
+          PreTag="section" // parent tag
+          {...props}
+        ></SyntaxHighlighter>
+      ) : (
+        <code className={styles.blog__code} {...props}>
+          {children}
+        </code>
+      );
     },
   };
 
   return (
     <article className={styles.article}>
-      <div className={styles.article__back}>
-        <p>
-          <span>
-            <ArrowIcon className={styles.article__iconback} />
-          </span>
-          All posts
-        </p>
-      </div>
-      <div>
+      <Link href="/blog">
+        <div className={styles.article__back}>
+          <p>
+            <span>
+              <ArrowIcon className={styles.article__iconback} />
+            </span>
+            All posts
+          </p>
+        </div>
+      </Link>
+      <div className={styles.article__content}>
         <PostHeader heading={post.title} image={post.image} slug={post.slug} date={post.date} />
         <ReactMarkdown components={customRenderers} className={styles.reactmarkdown}>
           {post.content}
         </ReactMarkdown>
+        <Link href="/blog">
+          <div className={`${styles.article__back} ${styles.article__back_bottom}`}>
+            <p>
+              <span>
+                <ArrowIcon className={styles.article__iconback} />
+              </span>
+              All posts
+            </p>
+          </div>
+        </Link>
       </div>
     </article>
   );

@@ -2,7 +2,7 @@ import styles from "./blog-post.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogPosts = ({ date, image, slug, content, title, short }) => {
+const BlogPosts = ({ date, image, slug, content, title, short, categories }) => {
   // Dont forget to include date in JSX below or pass it to a component
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
@@ -20,7 +20,13 @@ const BlogPosts = ({ date, image, slug, content, title, short }) => {
           <time className={styles.blogpost__date}>{formattedDate}</time>
           <h3 className={styles.blogpost__h3}>{title}</h3>
           <p className={styles.blogpost__p}>{short}</p>
-          <div></div>
+          <div className={styles.blogpost__categories}>
+            {categories.map((category, index) => (
+              <button key={index} className={styles.blogpost__category}>
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </Link>
     </article>

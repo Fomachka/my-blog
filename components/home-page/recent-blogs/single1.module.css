@@ -17,8 +17,8 @@
 }
 
 .recent__blog:hover {
-  border: 1px solid var(--border-color-dark);
-  background-color: var(--bg-color-hover);
+  background: var(--bg-color-hover);
+  border: 1px solid var(--border-color);
 }
 
 .recent__blog:hover .recent__h3 {
@@ -34,6 +34,7 @@
 
 .recent__p {
   font-size: 12px;
+  letter-spacing: -0.5px;
   color: var(--font-color-gray);
   margin: 10px 0;
   line-height: 22.5px;

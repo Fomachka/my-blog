@@ -1,9 +1,35 @@
 .article {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 750px;
+  justify-content: flex-start;
+  max-width: 1320px;
   margin: 30px auto 0 auto;
+}
+
+.article a {
+  color: var(--font-color-highlight);
+}
+
+.article__back {
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  border: 1px solid transparent;
+  padding: 2px 6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.article__back:hover {
+  border: 1px solid var(--border-color);
+  transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+  -moz-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  -o-transform: scale(1.02);
 }
 
 .article__back > p {
@@ -22,30 +48,53 @@
   -o-transform: rotate(-180deg);
 }
 
+.reactmarkdown > :first-child {
+  margin-top: 0;
+}
+
 .reactmarkdown p {
   font-size: 16px;
-  color: var(--font-color-accent);
-  letter-spacing: -0.5px;
+  color: var(--blog-color-text);
+  letter-spacing: -0.4px;
   line-height: 29px;
-  margin: 16px auto 24px auto;
+  margin: 1.5rem auto 2rem auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .reactmarkdown h2 {
   margin-top: 40px;
-  color: var(--font-color-h3);
+  color: var(--blog-color-headings);
   letter-spacing: -0.5px;
   font-size: 24px;
   font-weight: 600;
 }
 
-.reactmarkdown ul {
+.reactmarkdown ul,
+.reactmarkdown ol {
   padding: 0 20px;
   color: var(--font-color-dark);
-  list-style-type: circle;
-  margin-bottom: 1.5rem;
+  padding-inline-start: 40px;
+  margin: 16px 0 2rem 0;
 }
 
 .reactmarkdown ul li {
+  margin-bottom: 0.35rem;
+  position: relative;
+  list-style: none;
+  color: var(--font-color-accent);
+}
+
+.reactmarkdown ol li {
+  margin-bottom: 0.35rem;
+  padding-left: 15px;
+  color: var(--font-color-accent);
+}
+
+.reactmarkdown ul li::before {
+  content: "-";
+  position: absolute;
+  left: -30px;
 }
 
 .reactmarkdown pre {
@@ -53,27 +102,71 @@
   margin: 1.5rem 0;
 }
 
+.reactmarkdown pre > section {
+  border: 1px solid var(--border-color-dark);
+}
+
 .image {
-  margin-bottom: 1.5rem;
+  margin: 40px 0;
 }
 
 .image > img {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
   object-position: left;
+  border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  -ms-border-radius: 0.3em;
+  -o-border-radius: 0.3em;
+}
+
+.image__caption {
+  font-size: 12px;
+  color: var(--font-color-gray);
+  text-align: center;
+}
+
+.reactmarkdown .blog__code {
+  background: var(--inlinecode-color-bg);
+  color: var(--font-color-accent);
+  padding: 2px 4px;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid var(--border-color-dark);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.reactmarkdown blockquote {
+  font-style: italic;
+  margin-top: 1rem;
+  padding: 12px 0 12px 1.5rem;
+  border-left: 2px solid var(--border-color-dark);
+}
+
+.reactmarkdown > blockquote {
+  margin: 2rem 0;
+}
+
+.reactmarkdown blockquote p {
+  margin: 0;
+  color: var(--font-color-subtle);
+}
+
+.article__back_bottom {
+  margin: 0 auto 2.5rem auto;
+  width: fit-content;
 }
 
 @media screen and (min-width: 375px) {
-  .reactmarkdown p {
-    font-size: 18px;
-  }
-
-  .reactmarkdown h2 {
-    font-size: 30px;
-  }
   .reactmarkdown pre {
-    font-size: 16px;
+    font-size: 14px;
     margin: 2.5rem 0;
   }
 }
@@ -83,18 +176,36 @@
     margin-top: 60px;
   }
   .reactmarkdown p {
-    font-size: 20px;
+    font-size: 17px;
   }
-  .reactmarkdown h2 {
-    font-size: 36px;
-  }
+
   .reactmarkdown pre {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .article {
     margin-top: 70px;
+  }
+  .reactmarkdown p {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .article {
+    margin-top: 70px;
+    flex-direction: row;
+    gap: 166px;
+  }
+  .article__content {
+    max-width: 800px;
+  }
+  .reactmarkdown p {
+    margin-bottom: 2rem;
+  }
+
+  .article__back_bottom {
   }
 }
