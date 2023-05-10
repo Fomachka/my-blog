@@ -19,14 +19,16 @@ const PostContent = (props) => {
         const altString = image.properties.alt;
         const hasCaption = altString?.toLowerCase().includes("{caption:");
         const caption = altString?.match(/{caption: (.*?)}/)?.pop();
+        console.log(paragraph.src);
 
         return (
           <figure className={styles.image}>
             <Image
               src={`/images/posts/${post.slug}/${image.properties.src}`}
               alt={image.properties.alt}
-              width={200}
-              height={100}
+              width={400}
+              height={300}
+              priority
             />
             {hasCaption && (
               <figcaption className={styles.image__caption} aria-label={caption}>
@@ -41,6 +43,9 @@ const PostContent = (props) => {
     },
     h2(words) {
       return <h2>{words.children}</h2>;
+    },
+    h3(words) {
+      return <h3>{words.children}</h3>;
     },
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || "");

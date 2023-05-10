@@ -1,12 +1,12 @@
 .recent__blog {
   padding: 30px 0 0 30px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-recent);
   border-radius: 12px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   -o-border-radius: 12px;
-  box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 4px 21px var(--boxshadow-color);
   overflow: hidden;
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -14,15 +14,17 @@
   -moz-transition: background-color 0.15s ease;
   -ms-transition: background-color 0.15s ease;
   -o-transition: background-color 0.15s ease;
+  position: relative;
 }
 
 .recent__blog:hover {
-  background: var(--bg-color-hover);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color-dark);
+  background: transparent;
 }
 
-.recent__blog:hover .recent__h3 {
-  color: var(--font-color-highlight);
+.recent__blog:hover .recent__img {
+  filter: saturate(50%);
+  -webkit-filter: saturate(50%);
 }
 
 .recent__h3 {
@@ -30,6 +32,12 @@
   letter-spacing: -0.5px;
   color: var(--font-color-h3);
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .recent__p {
@@ -38,6 +46,12 @@
   color: var(--font-color-gray);
   margin: 10px 0;
   line-height: 22.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .recent__h3,
@@ -51,7 +65,7 @@
   height: auto;
   max-height: 130px;
   object-fit: cover;
-  box-shadow: -3px -3px 12px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px -3px 12px 2px var(--boxshadow-img);
   border-radius: 4px 0 0 4px;
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
@@ -59,6 +73,13 @@
   -o-border-radius: 4px 0 0 4px;
   filter: saturate(0%);
   opacity: 0.2;
+  -webkit-filter: saturate(0%);
+}
+
+@media screen and (min-width: 425px) {
+  .recent__p {
+    font-size: calc(10px + 0.5vw);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -83,12 +104,24 @@
   }
 }
 
+@media screen and (min-width: 1000px) {
+  .recent__h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .recent__blog {
     padding: 35px 0 0 40px;
   }
 
   .recent__p {
-    margin: 10px 0 15px 0;
+    margin: 10px 0 20px 0;
+    line-height: 30px;
   }
 }

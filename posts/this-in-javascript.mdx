@@ -1,0 +1,209 @@
+---
+title: "Understanding The Value Of `this` Keyword In Javascript"
+date: "2023-03-02"
+short: In JavaScript, `this` is a keyword that refers to the current context or object.  It can be used in different ways depending on its location within the code. Basically, `this` is a reference to the object that the current code is a part of.
+image: this.png
+isFeatured: true
+categories: ["Javascript", "React"]
+---
+
+As you may know, `this` keyword is very tricky in Javascript. In this article, we will together demistify `this` keyword in JavaScript in detail and in a way that's easy to understand!
+
+![Server-side rendering vs Static-site rendering](this.png)
+
+## What is `this`?
+
+In JavaScript, `this` is a keyword that refers to the current context or object. It can be used in different ways depending on its location within the code. Basically, `this` is a reference to the object that the current code is a part of.
+
+## How does `this` work?
+
+The value of `this` is determined at runtime, based on how the code is executed. The value of `this` can change depending on the context in which it is used.
+
+To better understand this concept, let's look at some examples:
+
+### Example 1: Using `this` inside an object method
+
+```javascript
+const person = {
+  name: "John",
+  sayHello: function () {
+    console.log(`Hello, my name is ${this.name}!`);
+  },
+};
+
+person.sayHello();
+```
+
+In this example, we have an object called `person` with a property called `name` and a method called `sayHello`. The `sayHello` method uses the `this` keyword to refer to the `person` object, so it can access the `name` property.
+
+When we call `person.sayHello()`, the value of `this` inside the `sayHello` function will be the `person` object. Therefore, it will output "Hello, my name is John!".
+
+### Example 2: Using `this` with a function that is not an object method
+
+```javascript
+const sayHello = function () {
+  console.log(`Hello, my name is ${this.name}!`);
+};
+
+const person1 = {
+  name: "John",
+  sayHello: sayHello,
+};
+
+const person2 = {
+  name: "Jane",
+  sayHello: sayHello,
+};
+
+person1.sayHello();
+person2.sayHello();
+```
+
+In this example, we have a function called `sayHello` that uses the `this` keyword to refer to the object that it is called on. We then create two objects called `person1` and `person2`, each with a `name` property and a `sayHello` method that uses the `sayHello` function.
+
+When we call `person1.sayHello()`, the value of `this` inside the `sayHello` function will be the `person1` object. Therefore, it will output "Hello, my name is John!". When we call `person2.sayHello()`, the value of `this` inside the `sayHello` function will be the `person2` object. Therefore, it will output "Hello, my name is Jane!".
+
+### Example 3: Using `this` with a callback function
+
+```javascript
+const button = document.querySelector("button");
+
+button.addEventListener("click", function () {
+  console.log(`The button was clicked by ${this.textContent}`);
+});
+```
+
+In this example, we have a button element in the HTML document, and we use JavaScript to add an event listener to it. The event listener function uses the `this` keyword to refer to the button element that triggered the event.
+
+When we click the button, the value of `this` inside the event listener function will be the button element. Therefore, it will output "The button was clicked by [the text content of the button]" (e.g. "The button was clicked by Click me!").
+
+## Why is `this` important?
+
+Understanding the `this` keyword is important in JavaScript because it allows us to write more dynamic and reusable code. By using `this`, we can refer to the current context or object and make our code more flexible.
+
+However, it's important
+
+### Using `this` in Constructor Functions
+
+Another common usage of `this` is in constructor functions. Constructor functions are used to create objects with similar properties and methods. When we use the `new` keyword with a constructor function, it creates a new instance of the object.
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const person1 = new Person("Alice", 25);
+console.log(person1.name); // Alice
+
+const person2 = new Person("Bob", 30);
+console.log(person2.age); // 30
+```
+
+In the `Person` constructor function, `this` refers to the instance of the object that is being created. We use `this` to set the `name` and `age` properties of the object.
+
+### The Value of `this` in Event Listeners
+
+In event listeners, the value of `this` is often important. In this context, `this` refers to the element that triggered the event. Let's consider an example:
+
+```html
+<button id="my-button">Click me!</button>
+```
+
+```javascript
+const button = document.getElementById("my-button");
+
+button.addEventListener("click", function () {
+  console.log(this); // logs the button element
+});
+```
+
+In this example, we use `document.getElementById` to get a reference to the button element. We then attach an event listener to the button using `addEventListener`. When the button is clicked, the event listener is triggered, and `this` inside the event listener function refers to the button element.
+
+### Avoiding `this` Pitfalls
+
+While `this` can be a powerful tool in JavaScript, it can also cause confusion and bugs if not used correctly. Here are a few pitfalls to be aware of:
+
+- **`this` in Arrow Functions**: Arrow functions don't have their own `this` binding, so they always use the `this` value of their enclosing context. This can be useful, but can also lead to unexpected behavior if the enclosing context isn't what you expect.
+- **`this` in Callback Functions**: Callback functions are often used in asynchronous code, where `this` can be lost. In these cases, it's common to use the `bind` method to ensure that `this` refers to the correct value.
+- **`this` in Object Methods**: When defining methods on objects, it's important to be aware of how `this` will be used. If the method is called on the object itself, `this` will refer to the object. However, if the method is called on a different object or in a different context, `this` will no longer refer to the original object.
+
+In general, it's important to pay attention to where `this` is being used and to think carefully about its value in different contexts. With practice, using `this` effectively can become second nature, and it can be a powerful tool for writing clean and modular JavaScript code.
+
+### Using `call`, `apply`, and `bind` to Control `this`
+
+Sometimes, we may want to explicitly set the value of `this` for a function, rather than relying on the default behavior. We can use the `call`, `apply`, and `bind` methods to achieve this.
+
+#### `call`
+
+The `call` method allows us to call a function with a specified `this` value and arguments provided individually.
+
+```javascript
+const person = {
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
+};
+
+const person1 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+const person2 = {
+  firstName: "Mary",
+  lastName: "Doe",
+};
+
+console.log(person.fullName.call(person1)); // John Doe
+console.log(person.fullName.call(person2)); // Mary Doe
+```
+
+In this example, we define an object `person` with a `fullName` method that returns the first name and last name properties of the object. We then define two more objects, `person1` and `person2`, and use the `call` method to call the `fullName` method with each object as the `this` value.
+
+#### `apply`
+
+The `apply` method is similar to the `call` method, but takes an array of arguments instead of individual arguments.
+
+```javascript
+const numbers = [5, 6, 2, 3, 7];
+
+const max = Math.max.apply(null, numbers);
+console.log(max); // 7
+```
+
+In this example, we use the `apply` method to find the maximum value in an array of numbers. We pass `null` as the `this` value (since the `Math.max` method doesn't require a `this` value), and pass the `numbers` array as the arguments.
+
+#### `bind`
+
+The `bind` method returns a new function with the `this` value set to a specified object.
+
+```javascript
+const person = {
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  },
+};
+
+const person1 = {
+  firstName: "John",
+  lastName: "Doe",
+};
+
+const person2 = {
+  firstName: "Mary",
+  lastName: "Doe",
+};
+
+const fullName1 = person.fullName.bind(person1);
+console.log(fullName1()); // John Doe
+
+const fullName2 = person.fullName.bind(person2);
+console.log(fullName2()); // Mary Doe
+```
+
+In this example, we define an object `person` with a `fullName` method. We then define two more objects, `person1` and `person2`, and use the `bind` method to create two new functions with the `this` value set to `person1` and `person2`, respectively.
+
+### Note
+
+The `this` keyword in JavaScript is used to refer to the current object in a particular context. The value of `this` can change depending on the location within the code where it is used. By understanding the different ways `this` can be used and how it changes, you can write more effective and modular code. Additionally, by using methods like `call`, `apply`, and `bind`, you can gain more control over the value of `this` in your functions.

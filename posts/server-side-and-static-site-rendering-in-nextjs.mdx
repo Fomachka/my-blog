@@ -1,0 +1,118 @@
+---
+title: "A Simple Guide to Understanding Server-Side Rendering (SSR) and Static-Site Rendering (SSG) in Next.js"
+date: "2023-02-02"
+image: ssg.png
+short: If you're new to Next.js, you might have heard about server-side rendering (SSR) and static-site rendering (SSG) and how they can improve website performance and SEO. In this guide, we'll explore what SSR and SSG are and their main differences using simple language and code examples.
+isFeatured: false
+categories: ["Next.js", "React"]
+---
+
+If you're new to Next.js, you might have heard about server-side rendering (SSR) and static-site rendering (SSG) and how they can improve website performance and SEO. In this guide, we'll explore what SSR and SSG are and their main differences using simple language and code examples.
+
+![Server-side rendering vs Static-site rendering](ssg.png)
+
+## What is Server-Side Rendering (SSR)?
+
+**Server-side rendering (SSR)** is a technique used to render web pages on the server and send them as HTML files to the client. With SSR, the server generates the HTML for each page requested by the client, so the client doesn't have to do any rendering work. This technique can improve website performance by reducing the amount of work required by the client to render a page.
+
+## What is Static-Site Rendering (SSG)?
+
+**Static-site rendering (SSG)** is a technique used to pre-render web pages at build time and serve them as static HTML files to the client. With SSG, the server generates the HTML for each page during the build process and saves it as a static file. When a client requests a page, the pre-rendered HTML is served to the client. This technique can improve website performance and reduce server load by serving pre-rendered pages as static HTML files to the client.
+
+## The Main Differences between SSR and SSG
+
+The main differences between SSR and SSG are:
+
+### 1. When the HTML is generated
+
+With SSR, the HTML is generated on the server dynamically each time a client requests a page. With SSG, the HTML is generated during the build process and saved as static files.
+
+### 2. When the data is fetched
+
+With SSR, the data is fetched each time a client requests a page, which can slow down the page load time. With SSG, the data is fetched during the build process and saved as static files, which can speed up the page load time.
+
+### 3. Caching
+
+With SSR, the HTML can be cached by the server or the client, but it can still be slower than serving static HTML files. With SSG, the HTML can be easily cached by the browser and loaded quickly by the client.
+
+## How to Implement SSR and SSG in Next.js
+
+In Next.js, you can implement SSR and SSG using the `getServerSideProps` and `getStaticProps` functions, respectively. Here are some code examples:
+
+### Implementing SSR in Next.js
+
+```javascript
+// pages/my-page.js
+
+import React from "react";
+
+export default function MyPage(props) {
+  return (
+    <div>
+      <h1>My Page</h1>
+      <p>This is my page with server-side rendering!</p>
+    </div>
+  );
+}
+
+export async function getServerSideProps() {
+  const data = await fetch("https://myapi.com/data");
+  const jsonData = await data.json();
+
+  return {
+    props: {
+      data: jsonData,
+    },
+  };
+}
+```
+
+In this example, we have a page called `my-page.js` that is using SSR. The `getServerSideProps` function is used to fetch data from an API and pass it as props to the `MyPage` component.
+
+### Implementing SSG in Next.js
+
+```javascript
+// pages/my-page.js
+
+import React from "react";
+
+export default function MyPage(props) {
+  return (
+    <div>
+      <h1>My Page</h1>
+      <p>This is my page with static-site rendering!</p>
+    </div>
+  );
+}
+
+export async function getStaticProps() {
+  const data = await fetch
+```
+
+```javascript
+  const jsonData = await data.json();
+
+  return {
+    props: {
+      data: jsonData,
+    },
+  };
+}
+```
+
+In this example, we have a page called `my-page.js` that is using SSG. The `getStaticProps` function is used to fetch data from an API and pass it as props to the `MyPage` component. The data is pre-rendered during the build process and saved as a static HTML file.
+
+## In Summary
+
+Server-side rendering (SSR) and static-site rendering (SSG) are powerful techniques that can improve website performance and SEO. With Next.js, you can easily implement both techniques using the `getServerSideProps` and `getStaticProps` functions.
+
+Remember, SSR is best for pages that require dynamic data or frequent updates, while SSG is best for pages with static data or infrequent updates. By choosing the right rendering technique for each page, you can provide a better user experience and improve website performance.
+I hope that this guide has helped you understand how to use server-side rendering (SSR) and static-site rendering (SSG) in Next.js, as well as the main differences between the two techniques.
+
+By using SSR, you can pre-render pages on the server and deliver fully rendered pages to the client, which can improve website performance and SEO. On the other hand, SSG allows you to pre-render pages during the build process, which can result in faster page loads and better user experience.
+
+When choosing between SSR and SSG, consider the needs of each page. Pages that require dynamic data or frequent updates are best suited for SSR, while pages with static data or infrequent updates are best suited for SSG.
+
+Remember to use the getServerSideProps and getStaticProps functions to fetch data and pass it as props to your components. And don't forget to test your website performance using tools like Lighthouse or Google PageSpeed Insights.
+
+I hope this guide has been helpful and that you are now ready to implement SSR and SSG in your Next.js projects!

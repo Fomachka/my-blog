@@ -1,12 +1,14 @@
 .recent__blog {
   display: flex;
-  border: 1px solid var(--border-color);
+  flex-direction: column;
+  padding: 30px 0 0 30px;
+  border: 1px solid var(--border-recent);
   border-radius: 12px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   -o-border-radius: 12px;
-  box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 4px 21px var(--boxshadow-color);
   cursor: pointer;
   transition: background-color 0.15s ease;
   -webkit-transition: background-color 0.15s ease;
@@ -16,16 +18,11 @@
 }
 
 .recent__blog:hover {
-  background: var(--bg-color-hover);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color-dark);
 }
-
-.recent__blog:hover .recent__h3 {
-  color: var(--font-color-highlight);
-}
-
-.recent__info {
-  padding: 30px;
+.recent__blog:hover .recent__img {
+  filter: saturate(50%);
+  -webkit-filter: saturate(50%);
 }
 
 .recent__h3 {
@@ -39,17 +36,24 @@
   font-size: 12px;
   color: var(--font-color-gray);
   letter-spacing: -0.5px;
-  margin-top: 10px;
+  margin: 10px 0;
   line-height: 22.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .recent__img {
   display: block;
   width: 100%;
+  max-height: 130px;
   height: auto;
   object-fit: cover;
   overflow-y: hidden;
-  box-shadow: -3px -3px 12px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: -3px -3px 12px 2px var(--boxshadow-img);
   border-radius: 4px 12px 12px 4px;
   -webkit-border-radius: 4px 12px 12px 4px;
   -moz-border-radius: 4px 12px 12px 4px;
@@ -59,7 +63,20 @@
   opacity: 0.2;
 }
 
+@media screen and (min-width: 425px) {
+  .recent__img {
+    min-width: 30%;
+  }
+  .recent__p {
+    font-size: calc(10px + 0.5vw);
+  }
+}
+
 @media screen and (min-width: 768px) {
+  .recent__blog {
+    flex-direction: row;
+    padding: 0;
+  }
   .recent__info {
     padding: 30px 35px 35px 35px;
   }
@@ -71,6 +88,18 @@
   .recent__p {
     font-size: 16px;
     line-height: 30px;
+    margin-bottom: 0px;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .recent__img {
+    max-height: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .recent__img {
+    min-width: 40%;
   }
 }
 
@@ -80,7 +109,6 @@
   }
 
   .recent__img {
-    min-width: 255px;
-    max-height: none;
+    min-width: 245px;
   }
 }

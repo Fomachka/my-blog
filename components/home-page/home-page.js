@@ -3,11 +3,11 @@ import linkedin from "../../public/images/linkedin.svg";
 import Image from "next/image";
 import styles from "./home-page.module.css";
 import Link from "next/link";
-import profilePic from "../../public/images/profile2-blog.png";
+import profilePic from "../../public/images/profile2-blog-scaled.png";
 import Arrow from "../../public/images/arrow.svg";
 import RecentBlog from "./recent-blog";
 
-const MainPage = () => {
+const MainPage = ({ featuredPosts }) => {
   return (
     <section className={styles.mainpage}>
       <article>
@@ -31,6 +31,8 @@ const MainPage = () => {
               alt="kim posing on the pier"
               className={styles.mainpage__img}
               priority
+              width={967}
+              height={1053}
             />
             <div className={styles.mainpage__link}>
               <p>Learn more </p>
@@ -41,8 +43,8 @@ const MainPage = () => {
       </article>
       <article className={styles.article}>
         <h2 className={styles.mainpage__h2}>Recent Blogs</h2>
-        <RecentBlog />
-        <Link href="about" className={styles.mainpage__btn}>
+        <RecentBlog featuredPosts={featuredPosts} />
+        <Link href="/blog" className={styles.mainpage__btn}>
           More Articles
         </Link>
       </article>

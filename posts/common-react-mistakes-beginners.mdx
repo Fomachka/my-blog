@@ -1,0 +1,172 @@
+---
+title: Common Beginner Mistakes To Avoid In React.js
+short: React.js is a popular front-end JavaScript library used for building user interfaces. It's easy to learn, and it offers a lot of benefits to developers. However, like any other technology, it has its share of pitfalls that beginners can fall into. In this guide, we'll discuss some common beginner mistakes in React.js and how to avoid them with code examples.
+image: mistakes.png
+isFeatured: true
+categories: ["React"]
+date: "2022-12-22"
+---
+
+React.js is a popular front-end JavaScript library used for building user interfaces. It's easy to learn, and it offers a lot of benefits to developers. However, like any other technology, it has its share of pitfalls that beginners can fall into. In this guide, we'll discuss some common beginner mistakes in React.js and how to avoid them with code examples.
+
+## Not Understanding the Component Hierarchy
+
+![Next.js Logo](mistakes.png)
+
+One of the most common mistakes beginners make in React.js is not understanding the component hierarchy. React.js is a component-based library, which means that your application is made up of individual components that can be reused throughout your application. Each component can have its own state, and it can render other components.
+
+Here's an example of a component hierarchy:
+
+```js
+function App() {
+  return (
+    <div>
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>Header</h1>;
+}
+
+function MainContent() {
+  return (
+    <div>
+      <h2>Main Content</h2>
+      <p>Some content goes here...</p>
+    </div>
+  );
+}
+
+function Footer() {
+  return <footer>Footer</footer>;
+}
+```
+
+To avoid this mistake, make sure you understand the component hierarchy of your application. Break down your application into smaller components, and make sure each component has a single responsibility.
+
+## Modifying State Directly
+
+Another common mistake beginners make in React.js is modifying state directly. State is an object that holds the data of your component, and it should be treated as immutable. Directly modifying state can cause unexpected behavior in your application.
+
+Here's an example of modifying state directly:
+
+```js
+function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    count++;
+    setCount(count);
+  }
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
+}
+```
+
+To avoid this mistake, use the `setState` method to update your state. This method ensures that your state is updated correctly and that your application is re-rendered when necessary.
+
+Here's an example of using `setState`:
+
+```js
+function App() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount((prevCount) => prevCount + 1);
+  }
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
+}
+```
+
+## Not Using Props Correctly
+
+Props are a way of passing data from a parent component to a child component. They are an essential part of React.js and are used to create reusable components. Beginners often make the mistake of not using props correctly.
+
+Here's an example of passing props:
+
+```js
+function App() {
+  return (
+    <div>
+      <Header title="My App" />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+}
+
+function Header(props) {
+  return <h1>{props.title}</h1>;
+}
+```
+
+To avoid this mistake, make sure you understand how props work in React.js. Use props to pass data from parent components to child components, and make sure you're not modifying props directly.
+
+## Not Using Keys Correctly
+
+Keys are a unique identifier for a component in a list. They help React.js identify which items have changed, added, or removed in a list. Beginners often make the mistake of not using keys correctly or not using them at all.
+
+Here's an example of using keys:
+
+```js
+function App() {
+  const items = ["Item 1", "Item 2", "Item 3"];
+
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+To avoid this mistake, make sure you always use keys when rendering lists in React.js. Keys should be unique and consistent, and they should not change over time.
+
+## Not Cleaning Up Effect Hooks
+
+Effect hooks are used to manage side effects in your component. Beginners often make the mistake of not cleaning up their effect hooks, which can lead to memory leaks in your application.
+
+Here's an example of not cleaning up effect hooks:
+
+```js
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <p>{count}</p>
+    </div>
+  );
+}
+```
+
+To avoid this mistake, make sure you clean up your effect hooks when your component is unmounted. Use the `return` statement in your effect hook to return a cleanup function.
+
+## Don't forget
+
+React.js is an excellent library for building user interfaces, but it has its share of pitfalls that beginners can fall into. By understanding the component hierarchy, using `setState` correctly, using props and keys appropriately, and cleaning up effect hooks, you can avoid these common mistakes and build better React.js applications.

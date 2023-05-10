@@ -21,11 +21,12 @@ const BlogPosts = ({ date, image, slug, content, title, short, categories }) => 
           <h3 className={styles.blogpost__h3}>{title}</h3>
           <p className={styles.blogpost__p}>{short}</p>
           <div className={styles.blogpost__categories}>
-            {categories.map((category, index) => (
-              <button key={index} className={styles.blogpost__category}>
-                {category}
-              </button>
-            ))}
+            {categories &&
+              categories.map((category, index) => (
+                <button key={index} className={styles.blogpost__category}>
+                  {category}
+                </button>
+              ))}
           </div>
         </div>
       </Link>

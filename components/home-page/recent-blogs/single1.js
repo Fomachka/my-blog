@@ -1,18 +1,23 @@
 import Image from "next/image";
-import image from "../../../public/images/posts/getting-started-with-nextjs/getting-started-nextjs.png";
+import image from "../../../public/images/posts/server-side-and-static-site-rendering-in-nextjs/server-side.png";
 import styles from "./single1.module.css";
 import Link from "next/link";
 
-const RecentSingleBlog1 = () => {
+const RecentSingleBlog1 = ({ postInfo }) => {
+  const { title, short, slug, image } = postInfo;
+  const imagePath = `/images/posts/${slug}/${image}`;
   return (
-    <Link href="about">
+    <Link href={`blog/${slug}`}>
       <div className={styles.recent__blog}>
-        <h3 className={styles.recent__h3}>How to use storage session in react using hooks</h3>
-        <p className={styles.recent__p}>
-          I started using React professionally back in 2015, and I&apos;ve been working with it ever
-          since.
-        </p>
-        <Image src={image} alt="next js" className={styles.recent__img} />
+        <h3 className={styles.recent__h3}>{title}</h3>
+        <p className={styles.recent__p}>{short}</p>
+        <Image
+          src={imagePath}
+          alt="next js"
+          className={styles.recent__img}
+          width={500}
+          height={500}
+        />
       </div>
     </Link>
   );

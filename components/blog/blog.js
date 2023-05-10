@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 
 const BlogPage = (props) => {
   const [search, setSearch] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [filteredByCategories, setFilteredByCategories] = useState(null);
+  const [categories, setCategories] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("0");
   const [posts, setPosts] = useState(props.posts);
+  const [postsLength, setPostsLength] = useState(props.posts.length);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(3);
@@ -22,11 +23,21 @@ const BlogPage = (props) => {
     setCurrentPage(pageNumber);
   };
 
+  const handleSearch = (event) => {
+    setCurrentPage(1);
+    setSearch(event.target.value);
+    let filtered = props.posts.filter((post) => {
+      return search.toLowerCase() === "" ? post : post.title.toLowerCase().includes(search);
+    });
+    setPosts(filtered);
+    setPostsLength(filtered.length);
+  };
+
   const handleUniqueCategories = (posts) => {
     const allCategories = [];
 
     posts.forEach((post) => {
-      post.categories.forEach((category) => allCategories.push(category));
+      if (post.categories) post.categories.map((category) => allCategories.push(category));
     });
 
     let uniqueCategories = allCategories.filter((category, index) => {
@@ -36,21 +47,28 @@ const BlogPage = (props) => {
     setCategories(["All", ...uniqueCategories]);
   };
 
-  const filterCategories = (category) => {
+  const filterCategories = (category, event) => {
     const filteredCategories = [];
 
+    setActiveCategory(event.target.id);
+    setCurrentPage(1);
+    // setSearch("");
+
     if (category === "All") {
-      setFilteredByCategories(null);
+      setPostsLength(props.posts.length);
+      setPosts(props.posts);
       return;
     }
 
-    props.posts.forEach((post) => {
-      if (post.categories.includes(category)) {
-        filteredCategories.push(post);
+    props.posts?.forEach((post) => {
+      if (post.categories) {
+        if (post.categories.includes(category)) {
+          filteredCategories.push(post);
+        }
       }
     });
-
-    setFilteredByCategories(filteredCategories);
+    setPostsLength(filteredCategories.length);
+    setPosts(filteredCategories);
   };
 
   useEffect(() => {
@@ -71,8 +89,11 @@ const BlogPage = (props) => {
           {categories &&
             categories.map((category, index) => (
               <button
-                onClick={() => filterCategories(category)}
-                className={styles.blog__category}
+                id={index}
+                onClick={(e) => filterCategories(category, e)}
+                className={`${styles.blog__category} ${
+                  activeCategory === index.toString() ? styles.blog__btn_active : ""
+                }`}
                 key={index}
               >
                 {category}
@@ -94,51 +115,30 @@ const BlogPage = (props) => {
             type="search"
             id="blog-search"
             placeholder="Search..."
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => handleSearch(e)}
           />
         </div>
         <div className={styles.blogposts}>
-          {filteredByCategories
-            ? filteredByCategories
-                .filter((post) => {
-                  return search.toLowerCase() === ""
-                    ? post
-                    : post.title.toLowerCase().includes(search);
-                })
-                .map((post) => (
-                  <BlogPost
-                    key={post.slug}
-                    title={post.title}
-                    image={post.image}
-                    slug={post.slug}
-                    date={post.date}
-                    content={post.content}
-                    short={post.short}
-                    categories={post.categories}
-                  />
-                ))
-            : currentPosts
-                .filter((post) => {
-                  return search.toLowerCase() === ""
-                    ? post
-                    : post.title.toLowerCase().includes(search);
-                })
-                .map((post) => (
-                  <BlogPost
-                    key={post.slug}
-                    title={post.title}
-                    image={post.image}
-                    slug={post.slug}
-                    date={post.date}
-                    content={post.content}
-                    short={post.short}
-                    categories={post.categories}
-                  />
-                ))}
+          {currentPosts
+            .filter((post) => {
+              return search.toLowerCase() === "" ? post : post.title.toLowerCase().includes(search);
+            })
+            .map((post) => (
+              <BlogPost
+                key={post.slug}
+                title={post.title}
+                image={post.image}
+                slug={post.slug}
+                date={post.date}
+                content={post.content}
+                short={post.short}
+                categories={post.categories}
+              />
+            ))}
         </div>
         <Pagination
           postsPerPage={postsPerPage}
-          totalPosts={posts.length}
+          totalPosts={postsLength}
           paginate={handlePagination}
           currentPage={currentPage}
           numOfCurrentPosts={

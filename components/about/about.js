@@ -40,22 +40,22 @@ const About = () => {
       <div className={styles.about__links}>
         <p className={styles.about__link_p}>My Resume</p>
         <div className={styles.about__linksicon}>
-          <Link
+          <a
             href="https://google.com"
             rel="noopener noreferrer"
             target="_blank"
             className={styles.about__links_a}
           >
             <EyeIcon className={styles.link1} />
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://google.com"
             rel="noopener noreferrer"
             target="_blank"
             className={styles.about__links_a}
           >
             <DownloadIcon className={styles.link2} />
-          </Link>
+          </a>
         </div>
       </div>
       <p className={styles.about__p}>
