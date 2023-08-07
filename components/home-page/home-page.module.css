@@ -1,6 +1,7 @@
 .mainpage {
   max-width: 1320px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .mainpage__h1 {
@@ -17,8 +18,9 @@
   margin: 52px auto 28px auto;
   text-align: center;
 }
-.mainpage__h1 > span {
+.mainpage__h1 span {
   -webkit-text-fill-color: yellow;
+  display: inline-block;
 }
 
 .mainpage__hr {
@@ -76,7 +78,6 @@
 }
 
 .mainpage__container:hover .mainpage__img {
-  height: 280px;
   filter: saturate(60%);
   -webkit-filter: saturate(60%);
 }

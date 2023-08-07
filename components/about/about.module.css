@@ -35,10 +35,6 @@
   margin: 80px auto 0 auto;
 }
 
-/* .about__imgs:hover {
-  grid-template-columns: 1fr 1fr 1fr;
-} */
-
 .about__img1 {
   grid-area: 1 / 1 / 1 / 1;
   position: absolute;

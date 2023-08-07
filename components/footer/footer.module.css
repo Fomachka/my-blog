@@ -4,12 +4,15 @@
   letter-spacing: -0.5px;
   padding: 30px 25px;
   margin-top: 95px;
+  height: auto;
+  width: 100%;
 }
 
 .footer__container {
-  max-width: 1320px;
+  height: auto;
   margin: 0 auto;
   padding: 0px 3px;
+  max-width: 1320px;
 }
 
 .footer__links p {

@@ -1,7 +1,6 @@
 import styles from "./project-single.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import profilePic from "../../public/images/profile-blog.png";
 import LinkIcon from "../../public/images/link.svg";
 
 const SingleProject = ({ project }) => {

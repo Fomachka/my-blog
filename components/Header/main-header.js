@@ -61,70 +61,85 @@ const MainHeader = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__menu}>
-        <Link href="/">
-          {themeMode === "light" && clientLoaded ? (
-            <Image src={logo} alt="website logo" className={styles.header__logo} />
-          ) : (
-            <Image src={logoDark} alt="website logo" className={styles.header__logo} />
-          )}
-        </Link>
-        <nav className={styles.navigation} ref={navRef}>
-          <ul className={styles.navigation__ul}>
-            <li
-              onClick={closeNavbar}
-              className={router.asPath === "/" ? `${styles.li__active}` : ""}
-            >
-              <Link href="/">Portfolio</Link>
-            </li>
-            <li
-              onClick={closeNavbar}
-              className={router.asPath === "/about" ? `${styles.li__active}` : ""}
-            >
-              <Link href="/about">About</Link>
-            </li>
-            <li
-              onClick={closeNavbar}
-              className={router.asPath === "/blog" ? `${styles.li__active}` : ""}
-            >
-              <Link href="/blog">Blog</Link>
-            </li>
-            <li
-              onClick={closeNavbar}
-              className={router.asPath === "/projects" ? `${styles.li__active}` : ""}
-            >
-              <Link href="/projects">Projects</Link>
-            </li>
-          </ul>
-          <button className={styles.navigation__modalicons}>
-            {themeMode === "light" && clientLoaded ? (
-              <div ref={sunIconRef}>
-                <SunIcon
-                  onClick={themeModeHandle}
-                  className={`${styles.navigation__sun} ${styles.sun} `}
-                />
-              </div>
+      <div className={styles.header__main}>
+        <div className={styles.header__menu}>
+          <Link href="/">
+            {(themeMode === "light" || themeMode === undefined) && clientLoaded ? (
+              <Image src={logo} alt="website logo" className={styles.header__logo} />
             ) : (
-              <div ref={sunIconRef}>
-                <MoonIcon
-                  onClick={themeModeHandle}
-                  className={`${styles.navigation__sun} ${styles.moon} `}
-                />
-              </div>
+              <Image src={logoDark} alt="website logo" className={styles.header__logo} />
             )}
+          </Link>
+          <nav className={styles.navigation} ref={navRef}>
+            <ul className={styles.navigation__ul}>
+              <li
+                onClick={closeNavbar}
+                className={router.asPath === "/" ? `${styles.li__active}` : ""}
+              >
+                <Link href="/">Portfolio</Link>
+              </li>
+              <li
+                onClick={closeNavbar}
+                className={router.asPath === "/about" ? `${styles.li__active}` : ""}
+              >
+                <Link href="/about">About</Link>
+              </li>
+              <li
+                onClick={closeNavbar}
+                className={router.asPath === "/blog" ? `${styles.li__active}` : ""}
+              >
+                <Link href="/blog">Blog</Link>
+              </li>
+              <li
+                onClick={closeNavbar}
+                className={router.asPath === "/projects" ? `${styles.li__active}` : ""}
+              >
+                <Link href="/projects">Projects</Link>
+              </li>
+            </ul>
+            <button className={styles.navigation__modalicons}>
+              {themeMode === "light" && clientLoaded ? (
+                <div ref={sunIconRef}>
+                  <SunIcon
+                    onClick={themeModeHandle}
+                    className={`${styles.navigation__sun} ${styles.sun} `}
+                  />
+                </div>
+              ) : (
+                <div ref={sunIconRef}>
+                  <MoonIcon
+                    onClick={themeModeHandle}
+                    className={`${styles.navigation__sun} ${styles.moon} `}
+                  />
+                </div>
+              )}
+            </button>
+          </nav>
+          <button
+            className={styles.navigation__btn}
+            onClick={showNavbar}
+            aria-label="Button menu icon"
+          >
+            <MenuIcon animation={handleAnimation} ref={iconRef} />
           </button>
-        </nav>
-        <button className={styles.navigation__btn} onClick={showNavbar}>
-          <MenuIcon animation={handleAnimation} ref={iconRef} />
+        </div>
+        <button
+          className={styles.navigation__icons}
+          aria-label="Icon to change a theme of a website"
+        >
+          {themeMode === "light" && clientLoaded ? (
+            <SunIcon
+              onClick={themeModeHandle}
+              className={`${styles.header__sun} ${styles.sun}`}
+            />
+          ) : (
+            <MoonIcon
+              onClick={themeModeHandle}
+              className={`${styles.header__sun} ${styles.moon}`}
+            />
+          )}
         </button>
       </div>
-      <button className={styles.navigation__icons}>
-        {themeMode === "light" && clientLoaded ? (
-          <SunIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.sun}`} />
-        ) : (
-          <MoonIcon onClick={themeModeHandle} className={`${styles.header__sun} ${styles.moon}`} />
-        )}
-      </button>
     </header>
   );
 };

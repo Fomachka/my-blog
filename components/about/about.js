@@ -6,7 +6,6 @@ import profilePic1 from "../../public/images/personal/prof1.png";
 import profilePic2 from "../../public/images/personal/prof2.png";
 import profilePic3 from "../../public/images/personal/prof3.png";
 import ArrowDownIcon from "../../public/images/arrow-down.svg";
-import Link from "next/link";
 
 const About = () => {
   return (
@@ -18,24 +17,29 @@ const About = () => {
       <div className={styles.about__imgs}>
         <Image
           src={profilePic2}
-          unoptimized
           alt="author of a blog posing with a view"
           className={`${styles.about__profile} ${styles.about__img1}`}
+          width={287}
+          height={287}
         />
         <Image
           src={profilePic3}
           alt="author of a blog looking at the sun"
           className={`${styles.about__profile} ${styles.about__img2}`}
+          width={287}
+          height={287}
         />
         <Image
           src={profilePic1}
           alt="author of a blog posing on the pier"
           className={`${styles.about__profile} ${styles.about__img3}`}
+          width={287}
+          height={287}
         />
       </div>
       <p className={styles.about__p}>
-        Hey, my name is <span>Man Khi</span>, but you can call me Manee. A Front-end web developer
-        from around the world.
+        Hey, my name is <span>Man Khi</span>, but you can call me Manee. A Front-end web
+        developer from around the world.
       </p>
       <div className={styles.about__links}>
         <p className={styles.about__link_p}>My Resume</p>
@@ -44,6 +48,7 @@ const About = () => {
             href="https://google.com"
             rel="noopener noreferrer"
             target="_blank"
+            aria-label="A link to see the resume"
             className={styles.about__links_a}
           >
             <EyeIcon className={styles.link1} />
@@ -52,6 +57,7 @@ const About = () => {
             href="https://google.com"
             rel="noopener noreferrer"
             target="_blank"
+            aria-label="A link to download the resume"
             className={styles.about__links_a}
           >
             <DownloadIcon className={styles.link2} />
@@ -59,9 +65,9 @@ const About = () => {
         </div>
       </div>
       <p className={styles.about__p}>
-        I&apos;m a front-end wizard who occasionally dabbles in back-end shenanigans. I prefer to
-        focus on creating visually stunning websites that are joy to use and making them
-        user-friendly.
+        I&apos;m a front-end wizard who occasionally dabbles in back-end shenanigans. I
+        prefer to focus on creating visually stunning websites that are joy to use and
+        making them user-friendly.
       </p>
       <div className={styles.about__contact}>
         <p className={styles.about__p_magic}>Let&apos;s make some magic!</p>

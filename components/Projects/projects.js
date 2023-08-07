@@ -1,7 +1,6 @@
 import styles from "./projects.module.css";
 import SingleProject from "./project-single.js";
 
-import Link from "next/link";
 import ProjectsUtil from "../../lib/projects-util";
 
 const AllProjects = () => {
@@ -15,7 +14,9 @@ const AllProjects = () => {
       </div>
       <div className={styles.allprojects__projects}>
         {data &&
-          data.map((project, index) => <SingleProject id={index} key={index} project={project} />)}
+          data.map((project, index) => (
+            <SingleProject id={index} key={index} project={project} />
+          ))}
       </div>
       <a
         href="https://github.com/Fomachka?tab=repositories"

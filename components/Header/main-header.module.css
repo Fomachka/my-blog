@@ -1,20 +1,23 @@
 .header {
-  display: flex;
   position: sticky;
   top: 0;
-  padding: 40px 0px;
   z-index: 999;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1320px;
+  padding: 40px 0px;
   width: 100%;
-  margin: 0 auto;
   background: var(--header-bg-color);
   transition: 0.4s ease;
   -webkit-transition: 0.4s ease;
   -moz-transition: 0.4s ease;
   -ms-transition: 0.4s ease;
   -o-transition: 0.4s ease;
+}
+
+.header__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1320px;
 }
 
 .header__menu {
@@ -105,6 +108,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
@@ -121,6 +125,7 @@
     border: none;
     outline: none;
     background: transparent;
+    cursor: pointer;
   }
 
   .responsive__icon > svg {
@@ -132,7 +137,7 @@
     -o-transition: 2s ease;
   }
 
-  .li__active a {
+  .li__active {
     color: var(--font-color-gray) !important;
   }
 

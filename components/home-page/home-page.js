@@ -6,41 +6,71 @@ import Link from "next/link";
 import profilePic from "../../public/images/profile2-blog-scaled.png";
 import Arrow from "../../public/images/arrow.svg";
 import RecentBlog from "./recent-blog";
+import { motion } from "framer-motion";
 
 const MainPage = ({ featuredPosts }) => {
   return (
-    <section className={styles.mainpage}>
-      <article>
-        <h1 className={styles.mainpage__h1}>
-          Welcome to my website <span>👋</span>
-        </h1>
-        <hr className={styles.mainpage__hr} />
-        <p className={styles.mainpage__p}>
+    <motion.section className={styles.mainpage}>
+      <motion.article
+        transition={{ staggerChildren: 1 }}
+        viewport={{ once: false, amount: 1 }}
+        initial={"initial"}
+        animate={"animate"}
+      >
+        <motion.h1 className={styles.mainpage__h1}>
+          Welcome to my website{" "}
+          <motion.span
+            animate={{ rotate: [0, 25, 30, 35, 40, 35, 30, 25, 0] }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            👋
+          </motion.span>
+        </motion.h1>
+        <motion.hr
+          className={styles.mainpage__hr}
+          initial={{ x: -1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        />
+        <motion.p className={styles.mainpage__p}>
           I&apos;m{" "}
           <span>
             <Link href="/about">MAN KHI</Link>
           </span>
-          , a front-end developer and coding enthusiast. Welcome to my portfolio/blog where I share
-          my passion for coding and all things tech.
-        </p>
-        <hr className={styles.mainpage__hr} />
+          , a front-end developer and coding enthusiast. Welcome to my portfolio/blog
+          where I share my passion for coding and all things tech.
+        </motion.p>
+        <motion.hr
+          className={styles.mainpage__hr}
+          initial={{ x: 1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        />
         <Link href="/about">
-          <div className={styles.mainpage__container}>
-            <Image
-              src={profilePic}
-              alt="kim posing on the pier"
-              className={styles.mainpage__img}
-              priority
-              width={967}
-              height={1053}
-            />
-            <div className={styles.mainpage__link}>
-              <p>Learn more </p>
+          <motion.div
+            className={styles.mainpage__container}
+            transition={{ staggerChildren: 0.5 }}
+            initial={"off"}
+            animate={"on"}
+          >
+            <motion.div>
+              <Image
+                src={profilePic}
+                alt="kim posing on the pier"
+                className={styles.mainpage__img}
+                priority
+                sizes={"(max-width: 768px) 100vw, (max-width: 1920px) 100vw, 100vw"}
+                width={725}
+                height={790}
+              />
+            </motion.div>
+            <motion.div className={styles.mainpage__link}>
+              <motion.p>Learn more </motion.p>
               <Arrow className={styles.mainpage__link_img} />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </Link>
-      </article>
+      </motion.article>
       <article className={styles.article}>
         <h2 className={styles.mainpage__h2}>Recent Blogs</h2>
         <RecentBlog featuredPosts={featuredPosts} />
@@ -48,7 +78,7 @@ const MainPage = ({ featuredPosts }) => {
           More Articles
         </Link>
       </article>
-    </section>
+    </motion.section>
   );
 };
 

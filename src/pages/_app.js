@@ -1,11 +1,13 @@
 import "@/styles/globals.css";
 import Layout from "../../components/layout/layout";
-import Image from "next/image";
+import Transition from "./transition";
 
 export default function App({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <Transition>
+        <Component {...pageProps} />
+      </Transition>
     </Layout>
   );
 }

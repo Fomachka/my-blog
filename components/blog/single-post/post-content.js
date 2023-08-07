@@ -19,7 +19,6 @@ const PostContent = (props) => {
         const altString = image.properties.alt;
         const hasCaption = altString?.toLowerCase().includes("{caption:");
         const caption = altString?.match(/{caption: (.*?)}/)?.pop();
-        console.log(paragraph.src);
 
         return (
           <figure className={styles.image}>
@@ -79,7 +78,12 @@ const PostContent = (props) => {
         </div>
       </Link>
       <div className={styles.article__content}>
-        <PostHeader heading={post.title} image={post.image} slug={post.slug} date={post.date} />
+        <PostHeader
+          heading={post.title}
+          image={post.image}
+          slug={post.slug}
+          date={post.date}
+        />
         <ReactMarkdown components={customRenderers} className={styles.reactmarkdown}>
           {post.content}
         </ReactMarkdown>

@@ -15,6 +15,7 @@
   -moz-transition: border 0.15s ease;
   -ms-transition: border 0.15s ease;
   -o-transition: border 0.15s ease;
+  overflow: hidden;
 }
 
 .project__container:hover {
@@ -53,20 +54,27 @@
 }
 .project__img {
   width: 100%;
-  height: auto;
-  max-height: 200px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.project__img:hover > img {
+  transform: scale(1.04);
 }
 
 .project__img > img {
   display: block;
   width: 100%;
+  max-height: 260px;
+  height: 100%;
   object-fit: cover;
-  max-height: 200px;
+  object-position: top;
   border-radius: 0px 0px 12px 12px;
   -webkit-border-radius: 0px 0px 12px 12px;
   -moz-border-radius: 0px 0px 12px 12px;
   -ms-border-radius: 0px 0px 12px 12px;
   -o-border-radius: 0px 0px 12px 12px;
+  transition: transform 0.5s;
 }
 
 @media screen and (min-width: 768px) {
@@ -84,12 +92,6 @@
   }
   .project__icon {
     width: 22px;
-  }
-  .project__img {
-    max-height: 220px;
-  }
-  .project__img > img {
-    max-height: 220px;
   }
 }
 
@@ -109,11 +111,5 @@
   .project__icon {
     width: 24px;
     vertical-align: bottom;
-  }
-  .project__img {
-    max-height: 250px;
-  }
-  .project__img > img {
-    max-height: 250px;
   }
 }

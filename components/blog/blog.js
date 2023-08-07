@@ -4,6 +4,7 @@ import SearchIcon from "../../public/images/search-icon.svg";
 import BlogPost from "./blog-posts";
 import Pagination from "./pagination";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const BlogPage = (props) => {
   const [search, setSearch] = useState("");

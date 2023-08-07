@@ -1,14 +1,16 @@
 import ProjectDetails from "../../../components/projects/project-details/project-details.js";
-import { getAllProjects, getProjectByName } from "../../../components/projects/projects-data.js";
 
 const SingleProjectDetails = (props) => {
   return <ProjectDetails props={props.projectData[0]} />;
 };
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
-  const projectData = getProjectByName(id);
+
+  const response = await fetch("http://localhost:3000/api/projectsdata");
+  const data = await response.json();
+  const projectData = data.filter((project) => project.name === id);
 
   return {
     props: {
@@ -18,11 +20,12 @@ export function getStaticProps(context) {
   };
 }
 
-export function getStaticPaths() {
-  const projectsData = getAllProjects();
+export async function getStaticPaths() {
+  const response = await fetch("http://localhost:3000/api/projectsdata");
+  const data = await response.json();
 
   return {
-    paths: projectsData.map((project) => ({
+    paths: data.map((project) => ({
       params: {
         id: project.name,
       },

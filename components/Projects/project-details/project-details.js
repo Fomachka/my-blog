@@ -4,7 +4,8 @@ import styles from "./project-details.module.css";
 import Image from "next/image";
 
 const ProjectDetails = ({ props }) => {
-  const { name, image, short, link, colors, tools, description } = props;
+  const { name, imageLarge, short, link, colors, tools, description, git } = props;
+
   return (
     <section className={styles.project}>
       <div className={styles.project__back_container}>
@@ -20,7 +21,15 @@ const ProjectDetails = ({ props }) => {
         </Link>
       </div>
       <div className={styles.project__img}>
-        <Image src={image} alt={short} width={1200} height={700} priority />
+        <Image
+          src={imageLarge}
+          quality={100}
+          alt={short}
+          width={1521}
+          height={912}
+          priority
+          unoptimized={true}
+        />
       </div>
       <div className={styles.project__hr}></div>
       <div className={styles.project__info}>
@@ -35,21 +44,30 @@ const ProjectDetails = ({ props }) => {
               <p>{tools[0]}</p>
             </div>
             <div className={styles.project__tools_row}>
-              <p>CSS</p>
+              <p>Language</p>
               <p>{tools[1]}</p>
             </div>
             <div className={styles.project__tools_row}>
-              <p>Extra</p>
+              <p>Styling</p>
               <p>{tools[2]}</p>
+            </div>
+            <div className={styles.project__tools_row}>
+              <p>Additional tools</p>
+              <p>{tools[3]}</p>
             </div>
           </div>
         </div>
         <div className={styles.project__buttons}>
-          <a href={link} rel="noopener noreferrer" target="_blank" className={styles.project__btn1}>
+          <a
+            href={link}
+            rel="noopener noreferrer"
+            target="_blank"
+            className={styles.project__btn1}
+          >
             See Live
           </a>
           <a
-            href="https://github.com/Fomachka?tab=repositories"
+            href={git}
             rel="noopener noreferrer"
             target="_blank"
             className={styles.project__btn2}
@@ -65,15 +83,24 @@ const ProjectDetails = ({ props }) => {
           <h4>Accent colors</h4>
           <div className={styles.project__colors_container}>
             <div className={styles.project__colors}>
-              <div style={{ background: colors[0] }} className={styles.project__color}></div>
+              <div
+                style={{ background: colors[0] }}
+                className={styles.project__color}
+              ></div>
               <p>{colors[0]}</p>
             </div>
             <div className={styles.project__colors}>
-              <div style={{ background: colors[1] }} className={styles.project__color}></div>
+              <div
+                style={{ background: colors[1] }}
+                className={styles.project__color}
+              ></div>
               <p>{colors[1]}</p>
             </div>
             <div className={styles.project__colors}>
-              <div style={{ background: colors[2] }} className={styles.project__color}></div>
+              <div
+                style={{ background: colors[2] }}
+                className={styles.project__color}
+              ></div>
               <p>{colors[2]}</p>
             </div>
           </div>

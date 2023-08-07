@@ -19,12 +19,11 @@
 
 .recent__blog:hover {
   border: 1px solid var(--border-color-dark);
-  background: transparent;
 }
 
-.recent__blog:hover .recent__img {
-  filter: saturate(50%);
-  -webkit-filter: saturate(50%);
+.recent__blog:hover .recent__img_container img {
+  transform: scale(1.05);
+  opacity: var(--opacity-hover);
 }
 
 .recent__h3 {
@@ -59,21 +58,25 @@
   padding: 0px 20px 0px 2px;
 }
 
-.recent__img {
-  display: block;
+.recent__img_container {
+  overflow: hidden;
   width: 100%;
   height: auto;
+  border-radius: 6px 0 0 0px;
+  -webkit-border-radius: 6px 0 0 0px;
+  -moz-border-radius: 6px 0 0 0px;
+  -ms-border-radius: 6px 0 0 0px;
+  -o-border-radius: 6px 0 0 0px;
+}
+
+.recent__img {
+  display: block;
+  transition: transform 0.5s;
+  width: 100%;
   max-height: 130px;
+  height: auto;
   object-fit: cover;
-  box-shadow: -3px -3px 12px 2px var(--boxshadow-img);
-  border-radius: 4px 0 0 4px;
-  -webkit-border-radius: 4px 0 0 4px;
-  -moz-border-radius: 4px 0 0 4px;
-  -ms-border-radius: 4px 0 0 4px;
-  -o-border-radius: 4px 0 0 4px;
-  filter: saturate(0%);
-  opacity: 0.2;
-  -webkit-filter: saturate(0%);
+  opacity: var(--opacity);
 }
 
 @media screen and (min-width: 425px) {

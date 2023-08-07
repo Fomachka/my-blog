@@ -4,8 +4,6 @@ import { useEffect } from "react";
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, numOfCurrentPosts }) => {
   const pageNumbers = [];
 
-  console.log(totalPosts, numOfCurrentPosts, postsPerPage, currentPage);
-
   if (numOfCurrentPosts < postsPerPage && currentPage === 1) {
     for (let i = 1; i <= Math.ceil(numOfCurrentPosts / postsPerPage); i++) {
       pageNumbers.push(i);

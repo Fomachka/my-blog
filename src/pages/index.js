@@ -1,8 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Fragment } from "react";
 import HomePage from "../../components/home-page/home-page";
-import Footer from "../../components/footer/footer";
 import { getFeaturedPosts } from "../../lib/blog-util";
 
 export default function Home(props) {
