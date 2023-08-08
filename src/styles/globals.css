@@ -135,6 +135,19 @@ html {
   overflow: hidden;
 }
 
+.error-theme {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  text-align: center;
+}
+
 .error__h1 {
   font-size: 40px;
   font-weight: bold;
@@ -146,7 +159,7 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 52px auto 28px auto;
+  margin-bottom: 0.9rem;
   text-align: center;
 }
 
@@ -157,7 +170,27 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
+@media screen and (min-width: 768px) {
+  .error__h1 {
+    font-size: 64px;
+  }
+
+  .error__p {
+    font-size: 20px;
+    line-height: 50px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
+  .error__h1 {
+    font-size: 80px;
+  }
+
+  .error__p {
+    font-size: 26px;
+    line-height: 50px;
+    margin-top: 24px;
+  }
   .background {
     padding: 0px 40px;
   }
