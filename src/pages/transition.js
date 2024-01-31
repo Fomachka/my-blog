@@ -5,7 +5,7 @@ const Transition = ({ children }) => {
   const { asPath } = useRouter();
   return (
     <div className="effect-1">
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence initial={true} mode="wait">
         <motion.div
           key={asPath}
           initial={{ x: "100%" }}

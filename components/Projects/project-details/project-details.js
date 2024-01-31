@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const ProjectDetails = ({ props }) => {
   const { name, imageLarge, short, link, colors, tools, description, git } = props;
-
   return (
     <section className={styles.project}>
       <div className={styles.project__back_container}>
@@ -15,7 +14,7 @@ const ProjectDetails = ({ props }) => {
               <span>
                 <ArrowIcon className={styles.project__iconback} />
               </span>
-              All posts
+              All projects
             </p>
           </div>
         </Link>
@@ -27,7 +26,7 @@ const ProjectDetails = ({ props }) => {
           alt={short}
           width={1521}
           height={912}
-          priority
+          priority={true}
           unoptimized={true}
         />
       </div>

@@ -3,10 +3,16 @@ import ReactMarkdown from "react-markdown";
 import PostHeader from "./post-header";
 import styles from "./post-content.module.css";
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
+import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
+
 import ArrowIcon from "../../../public/images/arrow.svg";
 import Link from "next/link";
+
+SyntaxHighlighter.registerLanguage("js", js);
+SyntaxHighlighter.registerLanguage("css", css);
 
 const PostContent = (props) => {
   const { post } = props;
@@ -27,7 +33,7 @@ const PostContent = (props) => {
               alt={image.properties.alt}
               width={400}
               height={300}
-              priority
+              priority={true}
             />
             {hasCaption && (
               <figcaption className={styles.image__caption} aria-label={caption}>
@@ -52,9 +58,9 @@ const PostContent = (props) => {
         <SyntaxHighlighter
           // eslint-disable-next-line react/no-children-prop
           children={String(children).replace(/\n$/, "")}
-          style={atomDark} // theme
+          style={atomDark}
           language={match[1]}
-          PreTag="section" // parent tag
+          PreTag="section"
           {...props}
         ></SyntaxHighlighter>
       ) : (

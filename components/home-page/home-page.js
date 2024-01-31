@@ -1,5 +1,3 @@
-import github from "../../public/images/github.svg";
-import linkedin from "../../public/images/linkedin.svg";
 import Image from "next/image";
 import styles from "./home-page.module.css";
 import Link from "next/link";
@@ -58,7 +56,7 @@ const MainPage = ({ featuredPosts }) => {
                 src={profilePic}
                 alt="kim posing on the pier"
                 className={styles.mainpage__img}
-                priority
+                priority={true}
                 sizes={"(max-width: 768px) 100vw, (max-width: 1920px) 100vw, 100vw"}
                 width={725}
                 height={790}

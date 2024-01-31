@@ -125,6 +125,18 @@ html {
   -o-transition: 0.4s ease;
 }
 
+.background__loading_theme {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-main);
+  transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  -moz-transition: 0.4s ease;
+  -ms-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
+}
+
 .background {
   padding: 0px 25px;
   flex-grow: 1;
@@ -142,6 +154,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--background-main);
 }
 
 .error {
@@ -159,8 +172,57 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.9rem;
   text-align: center;
+}
+
+.error__p {
+  font-size: 16px;
+  margin: 0.9rem auto 2rem;
+  color: var(--font-color-gray);
+}
+
+.error__back {
+  cursor: pointer;
+  height: fit-content;
+  min-width: 100px;
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.error__back:hover {
+  border: 1px solid var(--border-color);
+}
+
+.error__back > p {
+  color: var(--font-color-highlight);
+  font-size: 14px;
+}
+
+.error__iconback {
+  width: 18px;
+  height: auto;
+  margin-right: 5px;
+  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+}
+
+.loading-theme {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  background-color: var(--background-main);
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -175,9 +237,13 @@ input[type="search"]::-webkit-search-results-decoration {
     font-size: 64px;
   }
 
+  .error__back > p {
+    font-size: 16px;
+  }
+
   .error__p {
     font-size: 20px;
-    line-height: 50px;
+    margin: 1.25rem auto 2.25rem;
   }
 }
 
@@ -187,9 +253,14 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   .error__p {
-    font-size: 26px;
-    line-height: 50px;
-    margin-top: 24px;
+    font-size: 24px;
+    margin: 1.5rem auto 3rem;
+  }
+  .error__back > p {
+    font-size: 17px;
+  }
+  .error__iconback {
+    margin-right: 8px;
   }
   .background {
     padding: 0px 40px;

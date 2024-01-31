@@ -1,7 +1,12 @@
 import styles from "./pagination.module.css";
-import { useEffect } from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, numOfCurrentPosts }) => {
+const Pagination = ({
+  postsPerPage,
+  totalPosts,
+  paginate,
+  currentPage,
+  numOfCurrentPosts,
+}) => {
   const pageNumbers = [];
 
   if (numOfCurrentPosts < postsPerPage && currentPage === 1) {

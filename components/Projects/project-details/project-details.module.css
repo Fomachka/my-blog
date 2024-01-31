@@ -15,7 +15,7 @@
   height: fit-content;
   width: fit-content;
   border: 1px solid transparent;
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -25,11 +25,6 @@
 
 .project__back:hover {
   border: 1px solid var(--border-color);
-  transform: scale(1.02);
-  -webkit-transform: scale(1.02);
-  -moz-transform: scale(1.02);
-  -ms-transform: scale(1.02);
-  -o-transform: scale(1.02);
 }
 
 .project__back > p {

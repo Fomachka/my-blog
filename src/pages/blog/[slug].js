@@ -30,7 +30,7 @@ export function getStaticPaths() {
         slug: slug,
       },
     })),
-    fallback: true,
+    fallback: false,
   };
 }
 export default PostPage;

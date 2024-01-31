@@ -23,7 +23,7 @@ To better understand this concept, let's look at some examples:
 
 ### Example 1: Using `this` inside an object method
 
-```javascript
+```js
 const person = {
   name: "John",
   sayHello: function () {
@@ -40,7 +40,7 @@ When we call `person.sayHello()`, the value of `this` inside the `sayHello` func
 
 ### Example 2: Using `this` with a function that is not an object method
 
-```javascript
+```js
 const sayHello = function () {
   console.log(`Hello, my name is ${this.name}!`);
 };
@@ -65,7 +65,7 @@ When we call `person1.sayHello()`, the value of `this` inside the `sayHello` fun
 
 ### Example 3: Using `this` with a callback function
 
-```javascript
+```js
 const button = document.querySelector("button");
 
 button.addEventListener("click", function () {
@@ -87,7 +87,7 @@ However, it's important
 
 Another common usage of `this` is in constructor functions. Constructor functions are used to create objects with similar properties and methods. When we use the `new` keyword with a constructor function, it creates a new instance of the object.
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -110,7 +110,7 @@ In event listeners, the value of `this` is often important. In this context, `th
 <button id="my-button">Click me!</button>
 ```
 
-```javascript
+```js
 const button = document.getElementById("my-button");
 
 button.addEventListener("click", function () {
@@ -138,7 +138,7 @@ Sometimes, we may want to explicitly set the value of `this` for a function, rat
 
 The `call` method allows us to call a function with a specified `this` value and arguments provided individually.
 
-```javascript
+```js
 const person = {
   fullName: function () {
     return this.firstName + " " + this.lastName;
@@ -165,7 +165,7 @@ In this example, we define an object `person` with a `fullName` method that retu
 
 The `apply` method is similar to the `call` method, but takes an array of arguments instead of individual arguments.
 
-```javascript
+```js
 const numbers = [5, 6, 2, 3, 7];
 
 const max = Math.max.apply(null, numbers);
@@ -178,7 +178,7 @@ In this example, we use the `apply` method to find the maximum value in an array
 
 The `bind` method returns a new function with the `this` value set to a specified object.
 
-```javascript
+```js
 const person = {
   fullName: function () {
     return this.firstName + " " + this.lastName;

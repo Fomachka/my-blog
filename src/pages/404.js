@@ -6,14 +6,14 @@ const ErrorPage = () => {
   return (
     <div className="error">
       <h1 className="error__h1">404 Error</h1>
-      <p className="error__p">Page you&apos;re looking for doesn&apos;t exist</p>
-      <Link href="/blog">
-        <div className={styles.article__back}>
+      <p className="error__p">The page you&apos;re looking for doesn&apos;t exist</p>
+      <Link href="/">
+        <div className="error__back">
           <p>
             <span>
-              <ArrowIcon className={styles.article__iconback} />
+              <ArrowIcon className="error__iconback" />
             </span>
-            All posts
+            Back to home
           </p>
         </div>
       </Link>

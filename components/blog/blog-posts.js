@@ -1,16 +1,13 @@
 import styles from "./blog-post.module.css";
-import Image from "next/image";
 import Link from "next/link";
 
-const BlogPosts = ({ date, image, slug, content, title, short, categories }) => {
-  // Dont forget to include date in JSX below or pass it to a component
+const BlogPosts = ({ date, slug, title, short, categories }) => {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const imagePath = `/images/posts/${slug}/${image}`;
   const linkPath = `/blog/${slug}`;
 
   return (

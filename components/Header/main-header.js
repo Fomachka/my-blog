@@ -65,7 +65,12 @@ const MainHeader = () => {
         <div className={styles.header__menu}>
           <Link href="/">
             {(themeMode === "light" || themeMode === undefined) && clientLoaded ? (
-              <Image src={logo} alt="website logo" className={styles.header__logo} />
+              <Image
+                src={logo}
+                alt="website logo"
+                className={styles.header__logo}
+                priority={true}
+              />
             ) : (
               <Image src={logoDark} alt="website logo" className={styles.header__logo} />
             )}

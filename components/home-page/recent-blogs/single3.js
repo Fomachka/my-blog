@@ -16,6 +16,7 @@ const RecentSingleBlog3 = ({ postInfo, animation }) => {
             className={styles.recent__img}
             width={500}
             height={500}
+            priority={true}
           />
         </div>
         <div className={styles.recent__info}>

@@ -1,10 +1,8 @@
 import styles from "./blog.module.css";
-import Image from "next/image";
 import SearchIcon from "../../public/images/search-icon.svg";
 import BlogPost from "./blog-posts";
 import Pagination from "./pagination";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
 const BlogPage = (props) => {
   const [search, setSearch] = useState("");
@@ -28,7 +26,9 @@ const BlogPage = (props) => {
     setCurrentPage(1);
     setSearch(event.target.value);
     let filtered = props.posts.filter((post) => {
-      return search.toLowerCase() === "" ? post : post.title.toLowerCase().includes(search);
+      return search.toLowerCase() === ""
+        ? post
+        : post.title.toLowerCase().includes(search);
     });
     setPosts(filtered);
     setPostsLength(filtered.length);
@@ -38,7 +38,8 @@ const BlogPage = (props) => {
     const allCategories = [];
 
     posts.forEach((post) => {
-      if (post.categories) post.categories.map((category) => allCategories.push(category));
+      if (post.categories)
+        post.categories.map((category) => allCategories.push(category));
     });
 
     let uniqueCategories = allCategories.filter((category, index) => {
@@ -53,7 +54,6 @@ const BlogPage = (props) => {
 
     setActiveCategory(event.target.id);
     setCurrentPage(1);
-    // setSearch("");
 
     if (category === "All") {
       setPostsLength(props.posts.length);
@@ -122,7 +122,9 @@ const BlogPage = (props) => {
         <div className={styles.blogposts}>
           {currentPosts
             .filter((post) => {
-              return search.toLowerCase() === "" ? post : post.title.toLowerCase().includes(search);
+              return search.toLowerCase() === ""
+                ? post
+                : post.title.toLowerCase().includes(search);
             })
             .map((post) => (
               <BlogPost
@@ -144,7 +146,9 @@ const BlogPage = (props) => {
           currentPage={currentPage}
           numOfCurrentPosts={
             currentPosts.filter((post) => {
-              return search.toLowerCase() === "" ? post : post.title.toLowerCase().includes(search);
+              return search.toLowerCase() === ""
+                ? post
+                : post.title.toLowerCase().includes(search);
             }).length
           }
         />

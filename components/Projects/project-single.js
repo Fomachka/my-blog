@@ -19,7 +19,13 @@ const SingleProject = ({ project }) => {
             </div>
           </div>
           <div className={styles.project__img}>
-            <Image src={image} alt="project website" priority width={400} height={400} />
+            <Image
+              src={image}
+              alt="project website"
+              priority={true}
+              width={400}
+              height={400}
+            />
           </div>
         </div>
       </Link>

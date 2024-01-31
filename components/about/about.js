@@ -6,6 +6,7 @@ import profilePic1 from "../../public/images/personal/prof1.png";
 import profilePic2 from "../../public/images/personal/prof2.png";
 import profilePic3 from "../../public/images/personal/prof3.png";
 import ArrowDownIcon from "../../public/images/arrow-down.svg";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -44,24 +45,25 @@ const About = () => {
       <div className={styles.about__links}>
         <p className={styles.about__link_p}>My Resume</p>
         <div className={styles.about__linksicon}>
-          <a
-            href="https://google.com"
+          <Link
+            href="https://drive.google.com/file/d/1kb1Ad_Eb6ZIUjkJ8sxfMF5TeWJVit7qo/view"
             rel="noopener noreferrer"
             target="_blank"
-            aria-label="A link to see the resume"
+            aria-label="A link to see the resume online"
             className={styles.about__links_a}
           >
             <EyeIcon className={styles.link1} />
-          </a>
-          <a
-            href="https://google.com"
+          </Link>
+          <Link
+            href="/documents/resume.pdf"
             rel="noopener noreferrer"
             target="_blank"
             aria-label="A link to download the resume"
+            download="resume"
             className={styles.about__links_a}
           >
             <DownloadIcon className={styles.link2} />
-          </a>
+          </Link>
         </div>
       </div>
       <p className={styles.about__p}>
