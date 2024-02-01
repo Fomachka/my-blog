@@ -1,4 +1,4 @@
-import ProjectDetails from "../../../components/header/main-header";
+import ProjectDetails from "../../../components/projects/project-details/project-details";
 import data from "../api/projectsdata.js";
 
 const SingleProjectDetails = (props) => {
