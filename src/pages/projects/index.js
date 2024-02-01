@@ -1,4 +1,4 @@
-import AllProjects from "../../../components/projects/projects";
+import AllProjects from "/components/projects/projects";
 import Head from "next/head";
 
 const index = () => {
@@ -6,7 +6,10 @@ const index = () => {
     <>
       <Head>
         <title>Projects</title>
-        <meta name="description" content="Showcasing of Kim Man Khi's personal projects" />
+        <meta
+          name="description"
+          content="Showcasing of Kim Man Khi's personal projects"
+        />
       </Head>
       <AllProjects />
     </>

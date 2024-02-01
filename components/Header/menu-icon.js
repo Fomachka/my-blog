@@ -1,5 +1,5 @@
 import styles from "./menu-icon.module.css";
-import { forwardRef, useRef } from "react";
+import { forwardRef } from "react";
 
 const MenuIcon = forwardRef(function MenuIcon(props, ref) {
   const { animation } = props;
