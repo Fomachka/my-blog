@@ -1,4 +1,4 @@
-import AllProjects from "/components/projects/projects";
+import AllProjects from "../../../components/projects/projects.js";
 import Head from "next/head";
 
 const index = () => {
