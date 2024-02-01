@@ -1,4 +1,4 @@
-import MainHeader from "../header/main-header.js";
+import MainHeader from "../header/main-header";
 import { Inter } from "@next/font/google";
 import Footer from "../footer/footer";
 import { useRouter } from "next/router";
