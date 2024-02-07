@@ -33,7 +33,7 @@ const projectsData = [
       "An ecommerce website platform with simple shopping cart features. The website was created using React.js, Stripe API for real time payment and Strapi CMS management as a back-end.",
     image: "/images/projects/studio.png",
     imageLarge: "/images/projects/studio-big.png",
-    link: "https://studioblank.netlify.app/",
+    link: "https://studio-blank.vercel.app/",
     colors: ["#EEE9E3", "#363636", "#E2E2E2"],
     tools: ["React.js", "Javascript", "CSS Module", "Redux Toolkit / Stripe"],
     git: "https://github.com/Fomachka/StudioBlank",
