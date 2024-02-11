@@ -64,7 +64,7 @@ const MainHeader = () => {
       <div className={styles.header__main}>
         <div className={styles.header__menu}>
           <Link href="/">
-            {(themeMode === "light" || themeMode === undefined) && clientLoaded ? (
+            {themeMode && themeMode === "light" ? (
               <Image
                 src={logo}
                 alt="website logo"
@@ -72,7 +72,12 @@ const MainHeader = () => {
                 priority={true}
               />
             ) : (
-              <Image src={logoDark} alt="website logo" className={styles.header__logo} />
+              <Image
+                src={logoDark}
+                alt="website logo"
+                className={styles.header__logo}
+                priority={true}
+              />
             )}
           </Link>
           <nav className={styles.navigation} ref={navRef}>
@@ -132,7 +137,7 @@ const MainHeader = () => {
           className={styles.navigation__icons}
           aria-label="Icon to change a theme of a website"
         >
-          {themeMode === "light" && clientLoaded ? (
+          {themeMode === "light" ? (
             <SunIcon
               onClick={themeModeHandle}
               className={`${styles.header__sun} ${styles.sun}`}
