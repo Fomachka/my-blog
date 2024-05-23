@@ -15,6 +15,7 @@ const MainHeader = () => {
   const storage = typeof window !== "undefined" ? window.localStorage.theme : "light";
   const [themeMode, setThemeMode] = useState(storage);
   const [clientLoaded, setClientLoaded] = useState(false);
+  console.log(themeMode, storage);
 
   const themeModeHandle = (e) => {
     e.preventDefault();
@@ -64,7 +65,7 @@ const MainHeader = () => {
       <div className={styles.header__main}>
         <div className={styles.header__menu}>
           <Link href="/">
-            {themeMode && themeMode === "light" ? (
+            {themeMode && themeMode === "light" && clientLoaded ? (
               <Image
                 src={logo}
                 alt="website logo"
@@ -108,7 +109,7 @@ const MainHeader = () => {
               </li>
             </ul>
             <button className={styles.navigation__modalicons}>
-              {themeMode === "light" && clientLoaded ? (
+              {themeMode && themeMode === "light" && clientLoaded ? (
                 <div ref={sunIconRef}>
                   <SunIcon
                     onClick={themeModeHandle}
@@ -137,7 +138,7 @@ const MainHeader = () => {
           className={styles.navigation__icons}
           aria-label="Icon to change a theme of a website"
         >
-          {themeMode === "light" ? (
+          {themeMode && themeMode === "light" && clientLoaded ? (
             <SunIcon
               onClick={themeModeHandle}
               className={`${styles.header__sun} ${styles.sun}`}
