@@ -1,5 +1,5 @@
 import Image from "next/image";
-import image from "../../../public/images/posts/server-side-and-static-site-rendering-in-nextjs/server-side.png";
+
 import styles from "./single1.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";

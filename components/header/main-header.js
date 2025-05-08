@@ -15,7 +15,6 @@ const MainHeader = () => {
   const storage = typeof window !== "undefined" ? window.localStorage.theme : "light";
   const [themeMode, setThemeMode] = useState(storage);
   const [clientLoaded, setClientLoaded] = useState(false);
-  console.log(themeMode, storage);
 
   const themeModeHandle = (e) => {
     e.preventDefault();
