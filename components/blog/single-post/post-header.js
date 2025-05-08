@@ -1,9 +1,6 @@
 import styles from "./post-header.module.css";
-import Image from "next/image";
 
 const PostHeader = ({ heading, image, slug, date }) => {
-  const imagePath = `/images/posts/${slug}/${image}`;
-
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
