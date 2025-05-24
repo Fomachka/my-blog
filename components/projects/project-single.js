@@ -18,15 +18,14 @@ const SingleProject = ({ project }) => {
               <LinkIcon className={styles.project__icon} />
             </div>
           </div>
-          <div className={styles.project__img}>
-            <Image
-              src={image}
-              alt="project website"
-              priority={true}
-              width={400}
-              height={400}
-            />
-          </div>
+          <Image
+            src={image}
+            alt="project website"
+            priority={true}
+            width={400}
+            height={400}
+            className={styles.project__img}
+          />
         </div>
       </Link>
     </article>

@@ -34,4 +34,9 @@
 }
 
 .pagination__error {
+  color: var(--font-color-h3);
+  letter-spacing: -0.5px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }

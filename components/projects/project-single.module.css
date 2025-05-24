@@ -51,6 +51,8 @@
   width: 20px;
   height: auto;
   vertical-align: middle;
+  stroke: #666666;
+  stroke-width: 1.5px;
 }
 .project__img {
   width: 100%;
@@ -58,11 +60,19 @@
   overflow: hidden;
 }
 
-.project__img:hover > img {
+.project:hover .project__img {
   transform: scale(1.04);
 }
 
-.project__img > img {
+.project:hover .project__info {
+  background: var(--inlinecode-color-bg);
+}
+
+.project:hover .project__icon {
+  stroke: var(--font-color-highlight);
+}
+
+.project__img {
   display: block;
   width: 100%;
   max-height: 260px;

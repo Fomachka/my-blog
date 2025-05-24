@@ -1,10 +1,27 @@
 .recent {
   display: grid;
-  gap: 25px;
+  gap: 40px;
+  margin-bottom: 48px;
 }
 
-@media screen and (min-width: 1000px) {
+.recent__h3 {
+  color: var(--font-color-h3);
+  letter-spacing: -0.5px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
   .recent {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .recent {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 68px;
   }
 }

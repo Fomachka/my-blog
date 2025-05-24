@@ -1,10 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "./main-header.module.css";
 import menustyles from "./menu-icon.module.css";
-import Image from "next/image";
-import logo from "../../public/images/my-logo.png";
-import logoDark from "../../public/images/my-logo-dark.png";
+
 import SunIcon from "../../public/images/sun.svg";
 import MoonIcon from "../../public/images/moon.svg";
 import { useRouter } from "next/router";
@@ -12,8 +12,10 @@ import { useRef } from "react";
 import MenuIcon from "./menu-icon";
 
 const MainHeader = () => {
-  const storage = typeof window !== "undefined" ? window.localStorage.theme : "light";
-  const [themeMode, setThemeMode] = useState(storage);
+  // const storage =  typeof window !== "undefined" ? window.localStorage.theme : "light"
+  const [themeMode, setThemeMode] = useState(() =>
+    typeof window !== "undefined" ? document.body.dataset.theme || "dark" : "dark"
+  );
   const [clientLoaded, setClientLoaded] = useState(false);
 
   const themeModeHandle = (e) => {
@@ -51,34 +53,50 @@ const MainHeader = () => {
   };
 
   useEffect(() => {
-    document.body.dataset.theme = themeMode;
-    window.localStorage.setItem("theme", themeMode);
-  }, [themeMode]);
+    let initialTheme;
+    const storedTheme = window.localStorage.getItem("theme");
 
-  useEffect(() => {
+    if (storedTheme) {
+      initialTheme = storedTheme;
+    } else {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        initialTheme = "dark";
+      } else {
+        initialTheme = "light";
+      }
+    }
+    setThemeMode(initialTheme);
     setClientLoaded(true);
   }, []);
+
+  useEffect(() => {
+    if (clientLoaded && themeMode) {
+      document.body.dataset.theme = themeMode;
+      window.localStorage.setItem("theme", themeMode);
+    }
+  }, [themeMode, clientLoaded]);
 
   return (
     <header className={styles.header}>
       <div className={styles.header__main}>
         <div className={styles.header__menu}>
           <Link href="/">
-            {themeMode && themeMode === "light" && clientLoaded ? (
-              <Image
-                src={logo}
-                alt="website logo"
-                className={styles.header__logo}
-                priority={true}
-              />
-            ) : (
-              <Image
-                src={logoDark}
-                alt="website logo"
-                className={styles.header__logo}
-                priority={true}
-              />
-            )}
+            <h1 className={styles.header__logo}>
+              <span>M</span>
+              <span>a</span>
+              <span>n</span>
+              <span>&nbsp;</span>
+              <span>K</span>
+              <span>h</span>
+              <span>i</span>
+              <span>&nbsp;</span>
+              <span>K</span>
+              <span>i</span>
+              <span>m</span>
+            </h1>
           </Link>
           <nav className={styles.navigation} ref={navRef}>
             <ul className={styles.navigation__ul}>
@@ -88,12 +106,7 @@ const MainHeader = () => {
               >
                 <Link href="/">Portfolio</Link>
               </li>
-              <li
-                onClick={closeNavbar}
-                className={router.asPath === "/about" ? `${styles.li__active}` : ""}
-              >
-                <Link href="/about">About</Link>
-              </li>
+
               <li
                 onClick={closeNavbar}
                 className={router.asPath === "/blog" ? `${styles.li__active}` : ""}
@@ -107,20 +120,14 @@ const MainHeader = () => {
                 <Link href="/projects">Projects</Link>
               </li>
             </ul>
-            <button className={styles.navigation__modalicons}>
-              {themeMode && themeMode === "light" && clientLoaded ? (
+            <button className={styles.navigation__modalicons} onClick={themeModeHandle}>
+              {clientLoaded && themeMode === "light" ? (
                 <div ref={sunIconRef}>
-                  <SunIcon
-                    onClick={themeModeHandle}
-                    className={`${styles.navigation__sun} ${styles.sun} `}
-                  />
+                  <SunIcon className={`${styles.navigation__sun} ${styles.sun} `} />
                 </div>
               ) : (
                 <div ref={sunIconRef}>
-                  <MoonIcon
-                    onClick={themeModeHandle}
-                    className={`${styles.navigation__sun} ${styles.moon} `}
-                  />
+                  <MoonIcon className={`${styles.navigation__sun} ${styles.moon} `} />
                 </div>
               )}
             </button>
@@ -137,7 +144,7 @@ const MainHeader = () => {
           className={styles.navigation__icons}
           aria-label="Icon to change a theme of a website"
         >
-          {themeMode && themeMode === "light" && clientLoaded ? (
+          {clientLoaded && themeMode === "light" ? (
             <SunIcon
               onClick={themeModeHandle}
               className={`${styles.header__sun} ${styles.sun}`}

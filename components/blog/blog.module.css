@@ -1,5 +1,5 @@
 .blog {
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
 .blog__h2 {
   font-size: 34px;
-  margin: 44px auto 9px auto;
+  margin: 74px auto 9px auto;
   background: linear-gradient(
     180deg,
     var(--font-color-to-gradient) 0%,
@@ -32,7 +32,7 @@
 
 .blogposts {
   display: grid;
-  gap: 25px;
+  gap: 30px;
 }
 
 .label__hidden {
@@ -69,12 +69,9 @@
   gap: 20px;
   padding: 11px 16px;
   border: 1px solid var(--border-color-dark);
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  margin: 46px auto 33px auto;
+  border-radius: 8px;
+
+  margin: 46px auto 40px auto;
 }
 
 .blog__search span {
@@ -136,9 +133,6 @@
 }
 
 @media screen and (min-width: 425px) {
-  .blog__h2 {
-    font-size: calc(22px + 3vmin);
-  }
   .blog__p {
     font-size: calc(9px + 1.25vmin);
   }
@@ -146,11 +140,7 @@
 
 @media screen and (min-width: 768px) {
   .blog__h2 {
-    font-size: 48px;
     margin: 68px auto 14px auto;
-  }
-  .blog__p {
-    font-size: 20px;
   }
 }
 
@@ -160,9 +150,10 @@
     grid-template-areas:
       "header hr container"
       "categories hr container";
-    column-gap: 30px;
+    column-gap: 48px;
     grid-template-rows: fit-content(500px) 1fr;
     grid-template-columns: 30% 1px 1fr;
+    margin-top: 40px;
   }
 
   .blog__categories {
@@ -191,7 +182,7 @@
   }
   .blog__h2 {
     margin-top: 46px;
-    font-size: 52px;
+    font-size: 38px;
   }
   .blog__p {
     line-height: 35px;

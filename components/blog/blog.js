@@ -23,15 +23,21 @@ const BlogPage = (props) => {
   };
 
   const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
     setCurrentPage(1);
-    setSearch(event.target.value);
-    let filtered = props.posts.filter((post) => {
-      return search.toLowerCase() === ""
-        ? post
-        : post.title.toLowerCase().includes(search);
-    });
-    setPosts(filtered);
-    setPostsLength(filtered.length);
+
+    setSearch(searchTerm);
+
+    if (searchTerm === "") {
+      setPosts(props.posts);
+      setPostsLength(props.posts.length);
+    } else {
+      let filtered = props.posts.filter((post) => {
+        return post.title.toLowerCase().includes(searchTerm);
+      });
+      setPosts(filtered);
+      setPostsLength(filtered.length);
+    }
   };
 
   const handleUniqueCategories = (posts) => {
@@ -74,7 +80,7 @@ const BlogPage = (props) => {
 
   useEffect(() => {
     handleUniqueCategories(props.posts);
-  }, [props]);
+  }, [props.posts]);
 
   return (
     <section className={styles.blog}>
@@ -117,14 +123,13 @@ const BlogPage = (props) => {
             id="blog-search"
             placeholder="Search..."
             onChange={(e) => handleSearch(e)}
+            value={search}
           />
         </div>
         <div className={styles.blogposts}>
           {currentPosts
             .filter((post) => {
-              return search.toLowerCase() === ""
-                ? post
-                : post.title.toLowerCase().includes(search);
+              return search === "" ? post : post.title.toLowerCase().includes(search);
             })
             .map((post) => (
               <BlogPost
@@ -146,9 +151,7 @@ const BlogPage = (props) => {
           currentPage={currentPage}
           numOfCurrentPosts={
             currentPosts.filter((post) => {
-              return search.toLowerCase() === ""
-                ? post
-                : post.title.toLowerCase().includes(search);
+              return search === "" ? post : post.title.toLowerCase().includes(search);
             }).length
           }
         />

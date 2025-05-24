@@ -1,10 +1,10 @@
 :root {
-  --bg-white: #ffffff;
-  --background-main: #fff;
+  --bg-white: #fbfcff;
+  --background-main: #fbfcff;
 
   --bg-color-hover: #fafafa;
 
-  --header-bg-color: rgba(255, 255, 255, 0.9);
+  --header-bg-color: rgba(251, 252, 255, 0.9);
 
   --font-color-main: #343434;
   --font-color-accent: #000000;
@@ -15,20 +15,21 @@
 
   --font-color-gray: #666666;
   --font-color-to-gradient: #555555;
-  --font-color-highlight: #0070f3;
+  --font-color-highlight: #0064da;
   --font-color-subtle: #787878;
 
   --font-color-h3: #262626;
 
   --icon-color-menu: #2b2b2b;
   --icon-color-resume: #2b2b2b;
+  --icon-color-glow: #ffa500;
 
   --blog-color-headings: #121212;
   --blog-color-text: #050505;
 
-  --border-color: #eaeaea;
+  --border-color: #dcdcdc;
   --border-color-dark: #bebebe;
-  --border-recent: #eaeaea;
+  --border-recent: #dcdcdc;
 
   --inlinecode-color-bg: #fafafa;
   --inlinecode-color-text: #000;
@@ -42,6 +43,7 @@
   --underline-color: #5d5a5a;
   --opacity: 0.8;
   --opacity-hover: 0.9;
+  min-width: 300px;
 }
 
 body[data-theme="dark"] {
@@ -64,6 +66,7 @@ body[data-theme="dark"] {
 
   --icon-color-menu: #e7e7e7;
   --icon-color-resume: #2b2b2b;
+  --icon-color-glow: #ffdf00;
 
   --blog-color-headings: #ededed;
   --blog-color-text: rgb(256, 256, 256, 0.85);
@@ -72,7 +75,7 @@ body[data-theme="dark"] {
   --border-color-dark: #4e4e4e;
   --border-recent: #181818;
 
-  --inlinecode-color-bg: #1f1f1f;
+  --inlinecode-color-bg: rgb(14, 14, 14);
   --inlinecode-color-text: #fff;
 
   --boxshadow-color: rgba(34, 34, 34, 0.109);

@@ -17,23 +17,56 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: 1280px;
 }
 
 .header__menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 55px;
+  gap: 60px;
 }
 
 .header__logo {
-  vertical-align: bottom;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: -1.2px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: default;
+  background: linear-gradient(
+    45deg,
+    var(--font-color-to-gradient) 30%,
+    var(--font-color-highlight) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-wrap: nowrap;
+}
+
+.header__logo span {
+  display: inline-block;
+  transition: opacity 0.2s ease-in-out;
+  background: linear-gradient(
+    180deg,
+    var(--font-color-to-gradient) 20%,
+    var(--font-color-accent) 100%
+  );
+  background-clip: text;
+}
+
+.header__logo:hover span {
+  opacity: 0.3;
+}
+
+.header__logo span:hover {
+  opacity: 1;
 }
 
 .navigation__ul {
   display: flex;
-  gap: 55px;
+  gap: 60px;
 }
 
 .navigation__ul li {
@@ -82,15 +115,13 @@
 }
 
 .sun {
-  height: auto;
-  width: 26px;
-  fill: var(--icon-color-menu);
+  fill: var(--font-color-gray);
+  animation: sun-appear-animation 0.3s ease-out forwards;
 }
 
 .moon {
-  width: 18px;
-  height: auto;
   fill: var(--icon-color-menu);
+  animation: moon-appear-animation 0.3s ease-out forwards;
 }
 
 .navigation__modalicons {
@@ -98,9 +129,8 @@
 }
 
 .navigation__icons {
-  display: inline-block;
-  max-width: 28px;
-  height: auto;
+  width: 31px;
+  height: 31px;
   border: none;
   outline: none;
   background: transparent;
@@ -111,6 +141,42 @@
   cursor: pointer;
 }
 
+.navigation__icons:hover .moon {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7))
+    drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+  transform: scale(1.1);
+  fill: var(--icon-color-glow);
+}
+
+.navigation__icons:hover .sun {
+  filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.7))
+    drop-shadow(0 0 20px rgba(255, 165, 0, 0.4));
+  transform: scale(1.1);
+  fill: var(--icon-color-glow);
+}
+
+@keyframes sun-appear-animation {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-45deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes moon-appear-animation {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .header__sun {
     display: none;
@@ -119,13 +185,39 @@
     display: block;
   }
   .navigation__modalicons {
-    display: inline-block;
-    width: 26px;
-    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
     border: none;
     outline: none;
     background: transparent;
     cursor: pointer;
+    text-align: center;
+  }
+
+  .navigation__modalicons:hover .moon {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7))
+      drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+    transform: scale(1.1);
+    fill: var(--icon-color-glow);
+  }
+
+  .navigation__modalicons:hover .sun {
+    filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.7))
+      drop-shadow(0 0 20px rgba(255, 165, 0, 0.4));
+    transform: scale(1.1);
+    fill: var(--icon-color-glow);
+  }
+
+  .responsive__icon {
+    width: fit-content;
+  }
+
+  .navigation__icons {
+    width: auto;
+    height: auto;
   }
 
   .responsive__icon > svg {
@@ -183,8 +275,9 @@
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
+    width: 100vw;
     height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -240,8 +333,21 @@
   }
 }
 
-@media screen and (max-width: 1320px) {
+@media screen and (max-width: 1280px) {
   .header {
     padding: 25px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .header__menu {
+    flex-basis: 61%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .header__logo {
+    font-weight: bold;
+    font-size: 40px;
   }
 }
