@@ -95,7 +95,7 @@ const MainPage = ({ featuredPosts }) => {
               where I share my passion for coding and all things tech.{" "}
             </p>
             <p className={styles.mainpage__description_p}>
-              Here, you'll find some of my favorite projects, technical articles, and
+              Here, you&apos;ll find some of my favorite projects, technical articles, and
               lessons learned along the way.
             </p>
             <p className={styles.mainpage__description_p}>
