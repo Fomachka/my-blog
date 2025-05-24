@@ -19,7 +19,7 @@ const ProjectDetails = ({ props }) => {
           </div>
         </Link>
       </div>
-      <div className={styles.project__img}>
+      <div className={styles.project__img_container}>
         <Image
           src={imageLarge}
           quality={100}
@@ -27,7 +27,7 @@ const ProjectDetails = ({ props }) => {
           width={1521}
           height={912}
           priority={true}
-          unoptimized={true}
+          className={styles.project__img}
         />
       </div>
       <div className={styles.project__hr}></div>
