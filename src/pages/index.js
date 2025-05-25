@@ -4,19 +4,13 @@ import HomePage from "../../components/home-page/home-page";
 import { getFeaturedPosts } from "../../lib/blog-util";
 
 export default function Home(props) {
-  const [themeMode, setThemeMode] =
-    typeof window !== "undefined" ? document.body.dataset.theme || "dark" : "dark";
-
   return (
     <Fragment>
       <Head>
         <title>KIM MAN KHI</title>
         <meta name="description" content="KIM MAN KHI's personal website and blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="theme-color"
-          content={themeMode === "light" ? "#fbfcff" : "#0a0a0a"}
-        />
+        <meta name="theme-color" content="#0064da" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomePage featuredPosts={props.featured} />
