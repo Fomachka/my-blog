@@ -10,17 +10,14 @@ import MoonIcon from "../../public/images/moon.svg";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import MenuIcon from "./menu-icon";
+import { useTheme } from "../contexts/ThemeContext";
 
 const MainHeader = () => {
-  // const storage =  typeof window !== "undefined" ? window.localStorage.theme : "light"
-  const [themeMode, setThemeMode] = useState(() =>
-    typeof window !== "undefined" ? document.body.dataset.theme || "dark" : "dark"
-  );
-  const [clientLoaded, setClientLoaded] = useState(false);
+  const { themeMode, toggleTheme } = useTheme();
 
   const themeModeHandle = (e) => {
     e.preventDefault();
-    setThemeMode((prev) => (prev === "dark" ? "light" : "dark"));
+    toggleTheme();
   };
 
   const navRef = useRef();
@@ -35,49 +32,26 @@ const MainHeader = () => {
 
   const showNavbar = () => {
     navRef.current.classList.toggle(`${styles.responsive__nav}`);
-    if (!sunIconRef.current.classList.contains(`${styles.responsive__icon}`)) {
+    if (
+      sunIconRef.current &&
+      !sunIconRef.current.classList.contains(`${styles.responsive__icon}`)
+    ) {
       sunIconRef.current.classList.add(styles.responsive__icon);
     }
   };
 
   const closeNavbar = () => {
     navRef.current.classList.remove(`${styles.responsive__nav}`);
-    if (iconRef.current.classList.contains(`${menustyles.openmenu}`)) {
+    if (iconRef.current && iconRef.current.classList.contains(`${menustyles.openmenu}`)) {
       handleAnimation();
     }
-    if (!sunIconRef.current.classList.contains(`${styles.responsive__icon}`)) {
-      sunIconRef.current.classList.add(styles.responsive__icon);
-    } else {
+    if (
+      sunIconRef.current &&
+      sunIconRef.current.classList.contains(`${styles.responsive__icon}`)
+    ) {
       sunIconRef.current.classList.remove(styles.responsive__icon);
     }
   };
-
-  useEffect(() => {
-    let initialTheme;
-    const storedTheme = window.localStorage.getItem("theme");
-
-    if (storedTheme) {
-      initialTheme = storedTheme;
-    } else {
-      if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        initialTheme = "dark";
-      } else {
-        initialTheme = "light";
-      }
-    }
-    setThemeMode(initialTheme);
-    setClientLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (clientLoaded && themeMode) {
-      document.body.dataset.theme = themeMode;
-      window.localStorage.setItem("theme", themeMode);
-    }
-  }, [themeMode, clientLoaded]);
 
   return (
     <header className={styles.header}>
@@ -121,15 +95,14 @@ const MainHeader = () => {
               </li>
             </ul>
             <button className={styles.navigation__modalicons} onClick={themeModeHandle}>
-              {clientLoaded && themeMode === "light" ? (
-                <div ref={sunIconRef}>
+              <div ref={sunIconRef}>
+                {" "}
+                {themeMode === "light" ? (
                   <SunIcon className={`${styles.navigation__sun} ${styles.sun} `} />
-                </div>
-              ) : (
-                <div ref={sunIconRef}>
+                ) : (
                   <MoonIcon className={`${styles.navigation__sun} ${styles.moon} `} />
-                </div>
-              )}
+                )}
+              </div>
             </button>
           </nav>
           <button
@@ -143,17 +116,12 @@ const MainHeader = () => {
         <button
           className={styles.navigation__icons}
           aria-label="Icon to change a theme of a website"
+          onClick={themeModeHandle}
         >
-          {clientLoaded && themeMode === "light" ? (
-            <SunIcon
-              onClick={themeModeHandle}
-              className={`${styles.header__sun} ${styles.sun}`}
-            />
+          {themeMode === "light" ? (
+            <SunIcon className={`${styles.header__sun} ${styles.sun}`} />
           ) : (
-            <MoonIcon
-              onClick={themeModeHandle}
-              className={`${styles.header__sun} ${styles.moon}`}
-            />
+            <MoonIcon className={`${styles.header__sun} ${styles.moon}`} />
           )}
         </button>
       </div>

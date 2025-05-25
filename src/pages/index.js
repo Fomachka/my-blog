@@ -10,7 +10,7 @@ export default function Home(props) {
         <title>KIM MAN KHI</title>
         <meta name="description" content="KIM MAN KHI's personal website and blog" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0064da" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomePage featuredPosts={props.featured} />
